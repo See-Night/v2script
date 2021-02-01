@@ -1,0 +1,20 @@
+{
+  "name": "typescript-v2sub",
+  "version": "1.1.0",
+  "author": "seenight",
+  "description": "v2ray subscription module",
+  "main": "index.js",
+  "types": "index.d.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "latest",
+    "nodejs-base64": "latest",
+    "request": "latest",
+    "sync-request": "latest",
+    "typescript": "latest",
+    "xmcommon": "latest"
+  }
+}
