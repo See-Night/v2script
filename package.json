@@ -1,6 +1,6 @@
 {
   "name": "typescript-v2sub",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "author": "seenight",
   "description": "v2ray subscription module",
   "main": "index.js",
