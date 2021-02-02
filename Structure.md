@@ -46,9 +46,9 @@
 | -------------- | -------- | ---------- | ------- |
 | domainStrategy | `string` | false      |         |
 
-| Function Name | Param: Type                         | return |
-| ------------- | ----------------------------------- | ------ |
-| addRules      | rule: [`ruleObject`]('#ruleObject') | `void` |
+| Function Name | Param: Type                       | return |
+| ------------- | --------------------------------- | ------ |
+| addRules      | rule: [`ruleObject`](#ruleObject) | `void` |
 
 ## ruleObject
 
