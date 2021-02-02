@@ -1,10 +1,10 @@
 {
   "name": "typescript-v2sub",
-  "version": "1.1.4",
+  "version": "1.1.6",
   "author": "seenight",
   "description": "v2ray subscription module",
-  "main": "index.js",
-  "types": "index.d.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.js",
   "scripts": {
     "build": "tsc"
   },
