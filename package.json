@@ -1,6 +1,6 @@
 {
   "name": "typescript-v2sub",
-  "version": "1.1.9",
+  "version": "1.1.11",
   "author": "seenight",
   "description": "v2ray subscription module",
   "main": "dist/index.js",
@@ -15,5 +15,19 @@
     "sync-request": "latest",
     "typescript": "latest",
     "xmcommon": "latest"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dreammer12138/typecript-v2sub.git"
+  },
+  "keywords": [
+    "v2ray",
+    "subscription",
+    "typescript"
+  ],
+  "bugs": {
+    "url": "https://github.com/Dreammer12138/typecript-v2sub/issues"
+  },
+  "homepage": "https://github.com/Dreammer12138/typecript-v2sub#readme"
 }
