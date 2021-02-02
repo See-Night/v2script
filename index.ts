@@ -1,13 +1,14 @@
 import request from 'sync-request';
 import { base64decode } from 'nodejs-base64';
 import { v2ray } from './v2ray';
-import { DOMAINSTRATEGY, PROTOCOL, LOGLEVEL, AUTH, NONE } from './common';
-import { ruleObject } from './structure/routing';
-import { inbound } from './structure/inbound';
-import { socks_inbound } from './protocol/socks';
-import { outbound } from './structure/outbound';
-import { vmess_outbound } from './protocol/vmess';
-import { streamSettings } from './structure/streamSettings';
+import * as common from './common';
+import { DOMAINSTRATEGY, PROTOCOL, LOGLEVEL, AUTH } from './common';
+import { ruleObject } from './structure';
+import { inbound } from './structure';
+import { socks_inbound } from './protocol';
+import { outbound } from './structure';
+import { vmess_outbound } from './protocol';
+import { streamSettings } from './structure';
 
 class sub {
     ps: string;
@@ -324,3 +325,5 @@ export class v2sub {
         return v;
     }
 }
+
+export { v2ray, common }

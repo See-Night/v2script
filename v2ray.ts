@@ -1,8 +1,4 @@
-import { Log } from './structure/log';
-import { dns } from './structure/dns';
-import { routing, ruleObject } from './structure/routing';
-import { inbound } from './structure/inbound';
-import { outbound } from './structure/outbound';
+import { Log, dns, routing, inbound, outbound } from './structure';
 
 import { DOMAINSTRATEGY } from './common';
 
