@@ -1,6 +1,6 @@
 {
   "name": "typescript-v2sub",
-  "version": "1.1.2",
+  "version": "1.1.4",
   "author": "seenight",
   "description": "v2ray subscription module",
   "main": "index.js",
@@ -12,7 +12,6 @@
   "dependencies": {
     "@types/node": "latest",
     "nodejs-base64": "latest",
-    "request": "latest",
     "sync-request": "latest",
     "typescript": "latest",
     "xmcommon": "latest"
