@@ -51,9 +51,7 @@ When you create a new v2sub instance using the constructor, v2sub automatically 
 You can use the `toConfig()` function to generate the configuration file needed by v2ray and export it using the `fs` module.
 
 ```typescript
-import * as fs from 'fs';
-
-fs.writeFiles('config.json', JSON.stringify(sub.toConfig(), null, 4), () => {});
+sub.toConfig('Your subscription\' name', 'output path');
 ```
 
 ## Further

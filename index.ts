@@ -9,6 +9,7 @@ import { socks_inbound } from './protocol';
 import { outbound } from './structure';
 import { vmess_outbound } from './protocol';
 import { streamSettings } from './structure';
+import * as fs from 'fs';
 
 class sub {
     ps: string;
@@ -61,7 +62,7 @@ export class v2sub {
         }
     }
 
-    toConfig(ps: string): v2ray {
+    toConfig(ps: string, url: string): void {
         let v = new v2ray();
         for (let s in this.subs) {
             if (ps === this.subs[s].ps) {
@@ -319,10 +320,11 @@ export class v2sub {
                     null,
                     'block'
                 ));
+
+                fs.writeFile(url, JSON.stringify(v, null, 4), () => {});
                 break;
             }
         }
-        return v;
     }
 }
 
