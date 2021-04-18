@@ -4,24 +4,24 @@
 
 ## Introduction
 
-Typescript v2sub is a v2ray configuration generation package based on typescript.
+Ts2ray is a v2ray configuration generation package based on typescript.
 
-Unlike the usual manual modification of config.json files to configure v2ray, TypeScript v2sub supports programmatic methods to configure config.json. This will provide you with help in building v2ray automation control scripts and visualization tools.
+Unlike the usual manual modification of config.json files to configure v2ray, Ts2ray supports programmatic methods to configure config.json. This will provide you with help in building v2ray automation control scripts and visualization tools.
 
-All configurations of Typescript v2sub are developed based on the official [v2ray](https://v2ray.com/) documentation.
+All configurations of Ts2ray are developed based on the official [v2ray](https://v2ray.com/) documentation.
 
-Of course, Typescript v2sub still has some shortcomings. If you have better ideas and suggestions, you are welcome to contribute the code.
+Of course, Ts2ray still has some shortcomings. If you have better ideas and suggestions, you are welcome to contribute the code.
 
 ## Installation
 
-Before installing Typescript v2ray, make sure that your computer has a nodejs environment configured and npm or yarn package manager installed.
+Before installing Ts2ray, make sure that your computer has a nodejs environment configured and npm or yarn package manager installed.
 
 ```shell
 # npm
-npm install typescript-v2sub
+npm install ts2ray
 
 # yarn
-yarn add typescript-v2sub
+yarn add ts2ray
 ```
 
 ## Quick Start
@@ -31,7 +31,7 @@ yarn add typescript-v2sub
 You need to import v2sub before using it.
 
 ```typescript
-import { v2sub } from 'typescript-v2sub';
+import { v2sub } from 'ts2ray';
 ```
 
 ### Create a new instance
@@ -87,7 +87,7 @@ In `v2ray`, we haven't developed the transport module yet, but we'll add it late
 ### Import v2ray
 
 ```typescript
-import { v2ray } from 'typescript-v2sub';
+import { v2ray } from 'ts2ray';
 ```
 
 ### Create a new instance
@@ -141,7 +141,7 @@ In the v2ray configuration file, the log property contains three child attribute
 Like this :
 
 ```typescript
-v.Log('access', 'error', 'loglevel');
+v.Log('access', 'error', 'warning');
 ```
 
 Most properties are of type string, however,  the construction of inbound, outbound and routing structures need other classes to participate in.
@@ -149,8 +149,8 @@ Most properties are of type string, however,  the construction of inbound, outbo
 **For example :**
 
 ```typescript
-import { inbound, outbound, streamSettings } from 'typescript-v2sub/dist/structure';
-import { socks_inbound, vmess_outbound } from 'typescript-v2sub/dist/protocol';
+import { inbound, outbound, streamSettings } from 'ts2ray';
+import { socks_inbound, vmess_outbound } from 'ts2ray';
 
 v.Inbound(new inbound(
     'proxy',
@@ -180,9 +180,9 @@ v.Outbound(new outbound(
 ### Complete generation structure
 
 ```typescript
-import { v2ray } from 'typescript-v2sub';
-import { inbound, outbound, ruleObject, streamSetting } from 'typescript-v2sub/dist/structure';
-import { socks_inbound, vmess_outbound } from 'typescript-v2sub/dist/protocol';
+import { v2ray } from 'ts2ray';
+import { inbound, outbound, ruleObject, streamSetting } from 'ts2ray';
+import { socks_inbound, vmess_outbound } from 'ts2ray';
 
 v.Log('', '', LOGLEVEL.warning);
 v.Dns(['119.29.29.29']);

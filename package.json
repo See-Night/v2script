@@ -1,10 +1,10 @@
 {
-  "name": "typescript-v2sub",
-  "version": "1.1.16",
+  "name": "ts2ray",
+  "version": "1.1.7",
   "author": "seenight",
   "description": "v2ray subscription module",
   "main": "dist/index.js",
-  "types": "dist/index.d.js",
+  "typings": "dist/index.d.js",
   "scripts": {
     "build": "tsc"
   },
@@ -19,7 +19,7 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dreammer12138/typecript-v2sub.git"
+    "url": "git+https://github.com/Dreammer12138/ts2ray.git"
   },
   "keywords": [
     "v2ray",
@@ -27,7 +27,7 @@
     "typescript"
   ],
   "bugs": {
-    "url": "https://github.com/Dreammer12138/typecript-v2sub/issues"
+    "url": "https://github.com/Dreammer12138/ts2ray/issues"
   },
-  "homepage": "https://github.com/Dreammer12138/typecript-v2sub#readme"
+  "homepage": "https://github.com/Dreammer12138/ts2ray#readme"
 }

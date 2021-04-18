@@ -4,24 +4,24 @@
 
 ## Introduction
 
-TypeScript v2sub是一个基于TypeScript的v2ray配置生成包。
+Ts2ray是一个基于TypeScript的v2ray配置生成包。
 
-与通常手动修改config.json文件以配置v2ray不同，TypeScript v2sub支持编程方法来配置config.json。这将帮助您构建v2ray自动化控制脚本和可视化工具。
+与通常手动修改config.json文件以配置v2ray不同，Ts2ray支持编程方法来配置config.json。这将帮助您构建v2ray自动化控制脚本和可视化工具。
 
-TypeScript v2sub的所有配置都是基于官方[v2ray](https://v2ray.com/)文档开发的。
+Ts2ray的所有配置都是基于官方[v2ray](https://v2ray.com/)文档开发的。
 
-当然，Tyescript v2sub仍有一些不足之处。如果您有更好的想法和建议，欢迎您贡献代码。
+当然，Ts2ray仍有一些不足之处。如果您有更好的想法和建议，欢迎您贡献代码。
 
 ## 安装
 
-在安装 TypeScript v2ray 之前，请确保您的计算机已经配置了 NodeJS 环境，并且安装了 npm 或 yarn 包管理器。
+在安装 Ts2ray 之前，请确保您的计算机已经配置了 NodeJS 环境，并且安装了 npm 或 yarn 包管理器。
 
 ```shell
 # npm
-npm install typescript-v2sub
+npm install ts2ray
 
 # yarn
-yarn add typescript-v2sub
+yarn add ts2tay
 ```
 
 ## 开始
@@ -31,7 +31,7 @@ yarn add typescript-v2sub
 您需要先导入v2sub，然后才能使用它。
 
 ```typescript
-import { v2sub } from 'typescript-v2sub';
+import { v2sub } from 'ts2ray';
 ```
 
 ### 创建一个新的实例
@@ -87,7 +87,7 @@ sub.toConfig('Your subscription name', 'output path');
 ### 导入 v2ray
 
 ```typescript
-import { v2ray } from 'typescript-v2sub';
+import { v2ray } from 'ts2ray';
 ```
 
 ### 创建一个新的实例
@@ -141,7 +141,7 @@ let v = new v2ray();
 如下 :
 
 ```typescript
-v.Log('access', 'error', 'loglevel');
+v.Log('access', 'error', 'warning');
 ```
 
 大多数属性都是字符串类型，但是，入站、出站和路由结构的构造需要其他类参与。
@@ -149,8 +149,8 @@ v.Log('access', 'error', 'loglevel');
 **例：**
 
 ```typescript
-import { inbound, outbound, streamSettings } from 'typescript-v2sub/dist/structure';
-import { socks_inbound, vmess_outbound } from 'typescript-v2sub/dist/protocol';
+import { inbound, outbound, streamSettings } from 'ts2ray';
+import { socks_inbound, vmess_outbound } from 'ts2ray';
 
 v.Inbound(new inbound(
     'proxy',
@@ -180,9 +180,9 @@ v.Outbound(new outbound(
 ### 完整构建结构
 
 ```typescript
-import { v2ray } from 'typescript-v2sub';
-import { inbound, outbound, ruleObject, streamSetting } from 'typescript-v2sub/dist/structure';
-import { socks_inbound, vmess_outbound } from 'typescript-v2sub/dist/protocol';
+import { v2ray } from 'ts2ray';
+import { inbound, outbound, ruleObject, streamSetting } from 'ts2ray';
+import { socks_inbound, vmess_outbound } from 'ts2ray';
 
 v.Log('', '', LOGLEVEL.warning);
 v.Dns(['119.29.29.29']);

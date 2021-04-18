@@ -80,7 +80,7 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+
 
 # Gatsby files
 .cache/
@@ -89,7 +89,7 @@ dist
 # public
 
 # vuepress build output
-.vuepress/dist
+.vuepress/
 
 # Serverless directories
 .serverless/
@@ -105,3 +105,6 @@ dist
 
 # yarn
 yarn.lock
+
+# test
+test.ts
