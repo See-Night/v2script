@@ -1,6 +1,6 @@
 {
   "name": "ts2ray",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "author": "seenight",
   "description": "v2ray subscription module",
   "main": "dist/index.js",
