@@ -1,4 +1,4 @@
-# Typescript v2sub
+# Ts2ray
 
 [![NODEJS](https://img.shields.io/badge/Nodejs->=10-green)](https://nodejs.org) [![NPM](https://img.shields.io/badge/npm-orange)](https://www.npmjs.com) [![YARN](https://img.shields.io/badge/yarn-blue)](https://yarnpkg.com) [![TYPESCRIPT](https://img.shields.io/badge/typescript-4.1.3-informational)](https://www.typescriptlang.org/) 
 
