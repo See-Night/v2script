@@ -1,6 +1,6 @@
 {
   "name": "ts2ray",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "author": "seenight",
   "description": "v2ray subscription module",
   "main": "dist/index.js",
@@ -29,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/Dreammer12138/ts2ray/issues"
   },
-  "homepage": "https://github.com/Dreammer12138/ts2ray#readme"
+  "homepage": "https://github.com/Dreammer12138/ts2ray#readme",
+  "directories": {
+    "doc": "docs"
+  }
 }

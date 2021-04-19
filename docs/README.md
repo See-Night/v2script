@@ -175,7 +175,7 @@ v.Outbound(new outbound(
 ))
 ```
 
-**For more information on the structure, please see [here](https://1145141919810.wang/ts2ray/docs/Structure.md).**
+**For more information on the structure, please see [here](./Structure.md).**
 
 ### Complete generation structure
 
