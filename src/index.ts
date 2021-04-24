@@ -74,7 +74,7 @@ export class v2sub {
         this.url = url;
         let res = request('GET', url);
         let body = res.getBody().toString();
-        let vmesses: string = base64decode(body).toString().replace(/\n\n/g, '').replace(/vmess:\/\//g, '').split('\n');
+        let vmesses: string[] = base64decode(body).toString().replace(/\n\n/g, '').replace(/vmess:\/\//g, '').split('\n');
         for (let i = 0; i < vmesses.length; i++) {
             let q = JSON.parse(base64decode(vmesses[i]).split('\r\n').join(''));
             this.subs.push(new sub(q.ps, q.add, q.port, q.id, q.aid, q.net));
