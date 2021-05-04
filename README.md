@@ -4,6 +4,8 @@
 
 ## Introduction
 
+English | [简体中文](docs/zh-cn/README.md)
+
 Ts2ray is a v2ray configuration generation package based on typescript.
 
 Unlike the usual manual modification of config.json files to configure v2ray, Ts2ray supports programmatic methods to configure config.json. This will provide you with help in building v2ray automation control scripts and visualization tools.
