@@ -69,8 +69,8 @@ var v2sub = /** @class */ (function () {
         var res = sync_request_1.default('GET', url);
         var body = res.getBody().toString();
         var vmesses = nodejs_base64_1.base64decode(body).toString().replace(/\n\n/g, '').replace(/vmess:\/\//g, '').split('\n');
-        console.log(vmesses.slice(0, vmesses.length - 1));
-        for (var i = 0; i < vmesses.length; i++) {
+        vmesses = vmesses.slice(0, vmesses.length - 1);
+        for (var i in vmesses) {
             var q = JSON.parse(nodejs_base64_1.base64decode(vmesses[i]).split('\r\n').join(''));
             this.subs.push(new sub(q.ps, q.add, q.port, q.id, q.aid, q.net));
         }
