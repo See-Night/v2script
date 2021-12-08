@@ -12,7 +12,6 @@
   "dependencies": {
     "@types/node": "latest",
     "nodejs-base64": "latest",
-    "sync-request": "latest",
     "typescript": "latest",
     "xmcommon": "latest"
   },
