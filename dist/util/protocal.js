@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AccountObject = void 0;
+/** 用户配置 */
 var AccountObject = /** @class */ (function () {
     /**
      * AccountObject

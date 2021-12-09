@@ -1,16 +1,7 @@
 "use strict";
-/**
- * Shadowsocks (opens new window)协议，包含入站和出站两部分，兼容大部分其它版本的实现
- * 与官方版本的兼容性：
- * 支持 TCP 和 UDP 数据包转发，其中 UDP 可选择性关闭
- * 加密方式：
- * - AES-256-GCM
- * - AES-128-GCM
- * - ChaCha20-Poly1305 或称 ChaCha20-IETF-Poly1305
- * - none 或称 plain（V2Ray 4.27.0+）
- */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ShadowsocksServerObject = exports.ShadowsocksOutboundObject = exports.ShadowsocksInboundObject = void 0;
+/** Shadowsocks 入站配置 */
 var ShadowsocksInboundObject = /** @class */ (function () {
     /**
      * ShadowsocksInboundObject
@@ -19,7 +10,9 @@ var ShadowsocksInboundObject = /** @class */ (function () {
      * @param method 加密方式
      */
     function ShadowsocksInboundObject(email, password, method) {
+        /** 用户等级 */
         this.level = 0;
+        /** 可接收的网络连接类型 */
         this.network = "tcp" /* tcp */;
         this.email = email;
         this.password = password;
@@ -28,6 +21,7 @@ var ShadowsocksInboundObject = /** @class */ (function () {
     return ShadowsocksInboundObject;
 }());
 exports.ShadowsocksInboundObject = ShadowsocksInboundObject;
+/** Shadowsocks 服务器配置 */
 var ShadowsocksServerObject = /** @class */ (function () {
     /**
      * ShadowsocksServerObject
@@ -38,6 +32,7 @@ var ShadowsocksServerObject = /** @class */ (function () {
      * @param method 加密方式
      */
     function ShadowsocksServerObject(email, address, port, password, method) {
+        /** 用户等级 */
         this.level = 0;
         this.email = email;
         this.address = address;
@@ -48,9 +43,16 @@ var ShadowsocksServerObject = /** @class */ (function () {
     return ShadowsocksServerObject;
 }());
 exports.ShadowsocksServerObject = ShadowsocksServerObject;
+/** Shadowsocks 出站配置 */
 var ShadowsocksOutboundObject = /** @class */ (function () {
-    function ShadowsocksOutboundObject() {
-        this.servers = [];
+    /**
+     * ShadowsocksOutboundObject
+     * @param servers Shadowsocks服务
+     */
+    function ShadowsocksOutboundObject(servers) {
+        if (servers instanceof ShadowsocksServerObject)
+            servers = [servers];
+        this.servers = servers;
     }
     return ShadowsocksOutboundObject;
 }());

@@ -1,12 +1,8 @@
 "use strict";
-/**
- * 标准 Socks 协议实现
- * 兼容 Socks 4 (opens new window)、Socks 4a 和 Socks 5 (opens new window)
- * Socks 的配置分为两部分
- * InboundObject 和 OutboundObject，分别对应入站和出站协议配置中的 settings 项
- */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SocksUserObject = exports.SocksServerObject = exports.SocksInboundObject = exports.SocksOutboundObject = void 0;
+var util_1 = require("../../util");
+/** 用户配置 */
 var SocksUserObject = /** @class */ (function () {
     /**
      * SocksUserObject
@@ -14,6 +10,7 @@ var SocksUserObject = /** @class */ (function () {
      * @param pass 密码
      */
     function SocksUserObject(user, pass) {
+        /** 用户等级 */
         this.level = 0;
         this.user = user;
         this.pass = pass;
@@ -21,6 +18,7 @@ var SocksUserObject = /** @class */ (function () {
     return SocksUserObject;
 }());
 exports.SocksUserObject = SocksUserObject;
+/** Socks 服务器配置 */
 var SocksServerObject = /** @class */ (function () {
     /**
      * ServerObject
@@ -28,6 +26,7 @@ var SocksServerObject = /** @class */ (function () {
      * @param port 服务器端口
      */
     function SocksServerObject(address, port) {
+        /** 用户列表 */
         this.users = [];
         this.address = address;
         this.port = port;
@@ -35,30 +34,54 @@ var SocksServerObject = /** @class */ (function () {
     return SocksServerObject;
 }());
 exports.SocksServerObject = SocksServerObject;
+/** Socks 出站配置 */
 var SocksOutboundObject = /** @class */ (function () {
     /**
      * SocksOutbound
      * @param version Socks 协议版本
      */
-    function SocksOutboundObject(version) {
-        this.servers = [];
+    function SocksOutboundObject(version, servers) {
         this.version = version;
+        if (servers instanceof SocksServerObject)
+            servers = [servers];
+        this.servers = servers;
     }
     return SocksOutboundObject;
 }());
 exports.SocksOutboundObject = SocksOutboundObject;
+/** Socks 入站配置 */
 var SocksInboundObject = /** @class */ (function () {
     /**
      * SocksInboundObject
-     * @param ip SOCKS5 通过 UDP ASSOCIATE 命令建立 UDP 会话。服务端在对客户端发来的该命令的回复中，指定客户端发包的目标地址
+     * @param auth 认证方法
+     * @param account 用户列表
      */
-    function SocksInboundObject(ip) {
+    function SocksInboundObject(auth, account) {
+        /** 认证方法 */
         this.auth = "noauth" /* noauth */;
-        this.accounts = [];
+        /**
+         * 一个数组，数组中每个元素为一个用户帐号
+         * 此选项仅当 auth 为 password 时有效。
+         */
+        this.accounts = null;
+        /** 是否开启 UDP 协议的支持 */
         this.udp = false;
+        /**
+         * SOCKS5 通过 UDP ASSOCIATE 命令建立 UDP 会话。服务端在对客户端发来的该命令的回复中，指定客户端发包的目标地址
+         *
+         * v4.34.0+: 默认值为空，此时对于通过本地回环 IPv4/IPv6 连接的客户端，
+         * 回复对应的回环 IPv4/IPv6 地址；对于非本机的客户端，回复当前入站的监听地址
+         *
+         * v4.33.0 及更早版本: 默认值 127.0.0.1。
+         * 你可以通过配置此项使 V2Ray 固定回复你配置的地址。如果你不知道此项的作用，留空即可
+         */
         this.ip = null;
+        /** 用户等级 */
         this.userLevel = 0;
-        this.ip = ip;
+        this.auth = auth || this.auth;
+        if (account instanceof util_1.AccountObject)
+            account = [account];
+        this.accounts = account || null;
     }
     return SocksInboundObject;
 }());

@@ -1,30 +1,40 @@
-/**
- * VLESS 是一个无状态的轻量传输协议
- * 它分为入站和出站两部分，可以作为 V2Ray 客户端和服务器之间的桥梁
- * 与 VMess 不同，VLESS 不依赖于系统时间，认证方式同样为 UUID，但不需要 alterId
- */
-
 import { FallbackObject } from "../../util";
 
+/** Vless 服务器配置 */
 class VlessServerObject {
+    /** 服务器地址 */
     address: string;
+
+    /** 服务器端口 */
     port: number;
-    users: VlessUserObject[] = [];
+
+    /** 用户列表 */
+    users: VlessUserObject[];
 
     /**
      * VlessServerObject
      * @param address 服务器地址
      * @param port 服务器端口
+     * @param users 用户配置
      */
-    constructor(address: string, port: number) {
+    constructor(address: string, port: number, users: VlessUserObject | VlessUserObject[]) {
         this.address = address;
         this.port = port;
+
+        if (users instanceof VlessUserObject) users = [users];
+        this.users = users;
     }
 }
 
+/** 用户配置 */
 class VlessUserObject {
+    /** VLESS 的用户 ID，必须是一个合法的 UUID */
     id: string;
+
+    /** 现阶段需要填 "none"，不能留空。 */
     encryption: "none" = "none";
+
+    /** 用户等级 */
     level: number = 0;
 
     /**
@@ -36,18 +46,30 @@ class VlessUserObject {
     }
 }
 
+/** Vless 出站配置 */
 class VlessOutboundObject {
+    /** 服务器列表 */
     vnext: VlessServerObject[];
 
+    /**
+     * VlessOutboundObject
+     * @param servers 服务器配置
+     */
     constructor(servers: VlessServerObject | VlessServerObject[]) {
         if (servers instanceof VlessServerObject) servers = [servers];
         this.vnext = servers;
     }
 }
 
+/** Vless 客户端配置 */
 class VlessClientObject {
+    /** VLESS 的用户 ID，必须是一个合法的 UUID */
     id: string;
+
+    /** 用户等级 */
     level: number = 0;
+
+    /** 用户邮箱，用于区分不同用户的流量 */
     email: string;
 
     /**
@@ -61,12 +83,21 @@ class VlessClientObject {
     }
 }
 
+/** Vless 入站配置 */
 class VlessInboundObject {
-    clients: VlessClientObject[] = [];
-    fallbacks: FallbackObject[] = [];
+    /** 客户端列表 */
+    clients: VlessInboundObject[];
 
-    constructor(clients: VlessClientObject | VlessClientObject[], fallbacks: FallbackObject | FallbackObject[]) {
-        if (clients instanceof VlessClientObject) clients = [clients];
+    /** 回落分流列表 */
+    fallbacks: FallbackObject[];
+
+    /**
+     * VlessInboundObject
+     * @param clients 客户端列表
+     * @param fallbacks 回落分流列表
+     */
+    constructor(clients: VlessInboundObject | VlessInboundObject[], fallbacks: FallbackObject | FallbackObject[]) {
+        if (clients instanceof VlessInboundObject) clients = [clients];
         if (fallbacks instanceof FallbackObject) fallbacks = [fallbacks];
 
         this.clients = clients;

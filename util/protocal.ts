@@ -1,5 +1,9 @@
+/** 用户配置 */
 class AccountObject {
+    /** 用户名 */
     user: string;
+
+    /** 密码 */
     pass: string;
 
     /**

@@ -1,14 +1,4 @@
-/**
- * Shadowsocks (opens new window)协议，包含入站和出站两部分，兼容大部分其它版本的实现
- * 与官方版本的兼容性：
- * 支持 TCP 和 UDP 数据包转发，其中 UDP 可选择性关闭
- * 加密方式：
- * - AES-256-GCM
- * - AES-128-GCM
- * - ChaCha20-Poly1305 或称 ChaCha20-IETF-Poly1305
- * - none 或称 plain（V2Ray 4.27.0+）
- */
-
+/** Shadowsocks 加密方法 */
 const enum SHADOWSOCKS_METHOD {
     aes_256_gcm = "aes-256-gcm",
     aes_128_gcm = "aes-128-gcm",
@@ -17,17 +7,28 @@ const enum SHADOWSOCKS_METHOD {
     none = "none"
 }
 
+/** Shadowssocks 可接收的网络连接类型 */
 const enum SHADOWSOCKS_NETWORK {
     tcp = "tcp",
     udp = "udp",
     tcp_udp = "tcp,udp"
 }
 
+/** Shadowsocks 入站配置 */
 class ShadowsocksInboundObject {
+    /** 邮件地址，用于标识用户 */
     email: string;
+
+    /** 加密方法 */
     method: SHADOWSOCKS_METHOD;
+
+    /** 密码 */
     password: string;
+
+    /** 用户等级 */
     level: number = 0;
+
+    /** 可接收的网络连接类型 */
     network: SHADOWSOCKS_NETWORK = SHADOWSOCKS_NETWORK.tcp;
 
     /**
@@ -43,12 +44,24 @@ class ShadowsocksInboundObject {
     }
 }
 
+/** Shadowsocks 服务器配置 */
 class ShadowsocksServerObject {
+    /** 邮件地址，用于标识用户 */
     email: string;
+
+    /** 服务器地址，支持 IPv4、IPv6 和域名 */
     address: string;
+
+    /** 服务器端口 */
     port: number;
+
+    /** 加密方法 */
     method: SHADOWSOCKS_METHOD;
+
+    /** 密码 */
     password: string;
+
+    /** 用户等级 */
     level: number = 0;
 
     /**
@@ -68,7 +81,9 @@ class ShadowsocksServerObject {
     }
 }
 
+/** Shadowsocks 出站配置 */
 class ShadowsocksOutboundObject {
+    /** 服务器列表 */
     servers: ShadowsocksServerObject[];
 
     /**

@@ -2,7 +2,7 @@ import { BLACKHOLE_RESPONSE, BlackholeOutboundObject } from './blackhole';
 import { DNS_NETWORK, DnsOutboundObject } from './dns';
 import { DOKODEMODOOR_NETWORK, DokodemodoorInboundObject } from './dokodemodoor';
 import { FREEDOM_STRATEGY, FreedomOutboundObject } from './freedom';
-import { HTTPInboundObject, HTTPOutboundObject, HTTPUserObject } from './http';
+import { HTTPInboundObject, HTTPOutboundObject, HTTPUserObject, HTTPServerObject } from './http';
 import { LoopbackOutboundObject } from './loopback';
 import { SHADOWSOCKS_METHOD, SHADOWSOCKS_NETWORK, ShadowsocksInboundObject, ShadowsocksOutboundObject, ShadowsocksServerObject } from './shadowsocks';
 import { SocksOutboundObject, SocksInboundObject, SOCKS_AUTH, SocksServerObject, SocksUserObject } from './socks';
@@ -15,7 +15,7 @@ export {
     DNS_NETWORK, DnsOutboundObject,
     DOKODEMODOOR_NETWORK, DokodemodoorInboundObject,
     FREEDOM_STRATEGY, FreedomOutboundObject,
-    HTTPInboundObject, HTTPOutboundObject, HTTPUserObject,
+    HTTPInboundObject, HTTPOutboundObject, HTTPUserObject, HTTPServerObject,
     LoopbackOutboundObject,
     SHADOWSOCKS_METHOD, SHADOWSOCKS_NETWORK, ShadowsocksInboundObject, ShadowsocksOutboundObject, ShadowsocksServerObject,
     SocksOutboundObject, SocksInboundObject, SOCKS_AUTH, SocksServerObject, SocksUserObject,

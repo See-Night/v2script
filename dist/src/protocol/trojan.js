@@ -1,16 +1,8 @@
 "use strict";
-/**
- * 一种无法识别的机制，可以帮助您绕过GFW
- * Trojan 通过TLS提供多种协议，可避免主动/被动检测和ISP QoS限制
- * Trojan 程序不是固定的程序或协议
- * 这是一个想法，一个模仿最常见的服务的想法
- * 在某种程度上，它的行为相同，可以帮助你永久地越过长城防火墙，永远不会被识别出来
- * 我们是烈火；我们运送特洛伊木马
- *
- * 以上机翻自 https://github.com/trojan-gfw/trojan
- */
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TrojanOutboundObject = exports.TrojanInboundObject = exports.TrojanServerObject = exports.TrojanClientObject = void 0;
+var util_1 = require("../../util");
+/** Trojan 客户端配置 */
 var TrojanClientObject = /** @class */ (function () {
     /**
      * TrojanClientObject
@@ -18,6 +10,7 @@ var TrojanClientObject = /** @class */ (function () {
      * @param password 密码
      */
     function TrojanClientObject(email, password) {
+        /** 用户等级 */
         this.level = 0;
         this.password = password;
         this.email = email;
@@ -25,6 +18,7 @@ var TrojanClientObject = /** @class */ (function () {
     return TrojanClientObject;
 }());
 exports.TrojanClientObject = TrojanClientObject;
+/** Trojan 服务器配置 */
 var TrojanServerObject = /** @class */ (function () {
     /**
      * TrojanServerObject
@@ -34,6 +28,7 @@ var TrojanServerObject = /** @class */ (function () {
      * @param password 密码
      */
     function TrojanServerObject(address, port, email, password) {
+        /** 用户等级 */
         this.level = 0;
         this.address = address;
         this.port = port;
@@ -43,17 +38,34 @@ var TrojanServerObject = /** @class */ (function () {
     return TrojanServerObject;
 }());
 exports.TrojanServerObject = TrojanServerObject;
+/** Trojan 入站配置 */
 var TrojanInboundObject = /** @class */ (function () {
-    function TrojanInboundObject() {
-        this.clients = [];
-        this.fallbacks = [];
+    /**
+     * TrojanInboundObject
+     * @param clients 客户端列表
+     * @param fallbacks 回落分流列表
+     */
+    function TrojanInboundObject(clients, fallbacks) {
+        if (clients instanceof TrojanClientObject)
+            clients = [clients];
+        if (fallbacks instanceof util_1.FallbackObject)
+            fallbacks = [fallbacks];
+        this.clients = clients;
+        this.fallbacks = fallbacks;
     }
     return TrojanInboundObject;
 }());
 exports.TrojanInboundObject = TrojanInboundObject;
+/** Trojan 出站配置 */
 var TrojanOutboundObject = /** @class */ (function () {
-    function TrojanOutboundObject() {
-        this.servers = [];
+    /**
+     * TrojanOutboundObject
+     * @param servers 服务器配置
+     */
+    function TrojanOutboundObject(servers) {
+        if (servers instanceof TrojanServerObject)
+            servers = [servers];
+        this.servers = servers;
     }
     return TrojanOutboundObject;
 }());

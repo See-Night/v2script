@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.VmessServerObject = exports.DefaultObject = exports.DetourObject = exports.VmessClientObject = exports.VmessInboundObject = exports.VmessOutboundObject = exports.VmessUserObject = exports.VlessOutboundObject = exports.VlessInboundObject = exports.VlessClientObject = exports.VlessServerObject = exports.VlessUserObject = exports.TrojanOutboundObject = exports.TrojanInboundObject = exports.TrojanServerObject = exports.TrojanClientObject = exports.SocksUserObject = exports.SocksServerObject = exports.SocksInboundObject = exports.SocksOutboundObject = exports.ShadowsocksServerObject = exports.ShadowsocksOutboundObject = exports.ShadowsocksInboundObject = exports.LoopbackOutboundObject = exports.HTTPUserObject = exports.HTTPOutboundObject = exports.HTTPInboundObject = exports.FreedomOutboundObject = exports.DokodemodoorInboundObject = exports.DnsOutboundObject = exports.BlackholeOutboundObject = void 0;
+exports.VmessServerObject = exports.DefaultObject = exports.DetourObject = exports.VmessClientObject = exports.VmessInboundObject = exports.VmessOutboundObject = exports.VmessUserObject = exports.VlessOutboundObject = exports.VlessInboundObject = exports.VlessClientObject = exports.VlessServerObject = exports.VlessUserObject = exports.TrojanOutboundObject = exports.TrojanInboundObject = exports.TrojanServerObject = exports.TrojanClientObject = exports.SocksUserObject = exports.SocksServerObject = exports.SocksInboundObject = exports.SocksOutboundObject = exports.ShadowsocksServerObject = exports.ShadowsocksOutboundObject = exports.ShadowsocksInboundObject = exports.LoopbackOutboundObject = exports.HTTPServerObject = exports.HTTPUserObject = exports.HTTPOutboundObject = exports.HTTPInboundObject = exports.FreedomOutboundObject = exports.DokodemodoorInboundObject = exports.DnsOutboundObject = exports.BlackholeOutboundObject = void 0;
 var blackhole_1 = require("./blackhole");
 Object.defineProperty(exports, "BlackholeOutboundObject", { enumerable: true, get: function () { return blackhole_1.BlackholeOutboundObject; } });
 var dns_1 = require("./dns");
@@ -13,6 +13,7 @@ var http_1 = require("./http");
 Object.defineProperty(exports, "HTTPInboundObject", { enumerable: true, get: function () { return http_1.HTTPInboundObject; } });
 Object.defineProperty(exports, "HTTPOutboundObject", { enumerable: true, get: function () { return http_1.HTTPOutboundObject; } });
 Object.defineProperty(exports, "HTTPUserObject", { enumerable: true, get: function () { return http_1.HTTPUserObject; } });
+Object.defineProperty(exports, "HTTPServerObject", { enumerable: true, get: function () { return http_1.HTTPServerObject; } });
 var loopback_1 = require("./loopback");
 Object.defineProperty(exports, "LoopbackOutboundObject", { enumerable: true, get: function () { return loopback_1.LoopbackOutboundObject; } });
 var shadowsocks_1 = require("./shadowsocks");

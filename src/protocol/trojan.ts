@@ -1,19 +1,14 @@
-/**
- * 一种无法识别的机制，可以帮助您绕过GFW
- * Trojan 通过TLS提供多种协议，可避免主动/被动检测和ISP QoS限制
- * Trojan 程序不是固定的程序或协议
- * 这是一个想法，一个模仿最常见的服务的想法
- * 在某种程度上，它的行为相同，可以帮助你永久地越过长城防火墙，永远不会被识别出来
- * 我们是烈火；我们运送特洛伊木马
- * 
- * 以上机翻自 https://github.com/trojan-gfw/trojan
- */
-
 import { FallbackObject } from "../../util";
 
+/** Trojan 客户端配置 */
 class TrojanClientObject {
+    /** 密码 */
     password: string;
+
+    /** 邮件地址，用于标识用户 */
     email: string;
+
+    /** 用户等级 */
     level: number = 0;
 
     /**
@@ -27,11 +22,21 @@ class TrojanClientObject {
     }
 }
 
+/** Trojan 服务器配置 */
 class TrojanServerObject {
+    /** 服务器地址，支持 IPv4、IPv6 和域名 */
     address: string;
+
+    /** 服务器端口 */
     port: number;
+
+    /** 邮件地址，用于标识用户 */
     email: string;
+
+    /** 密码 */
     password: string;
+
+    /** 用户等级 */
     level: number = 0;
 
     /**
@@ -49,10 +54,19 @@ class TrojanServerObject {
     }
 }
 
+/** Trojan 入站配置 */
 class TrojanInboundObject {
+    /** 客户端列表 */
     clients: TrojanClientObject[];
+
+    /** 回落分流列表 */
     fallbacks: FallbackObject[];
 
+    /**
+     * TrojanInboundObject
+     * @param clients 客户端列表
+     * @param fallbacks 回落分流列表
+     */
     constructor(clients: TrojanClientObject | TrojanClientObject[], fallbacks: FallbackObject | FallbackObject[]) {
         if (clients instanceof TrojanClientObject) clients = [clients];
         if (fallbacks instanceof FallbackObject) fallbacks = [fallbacks];
@@ -62,9 +76,15 @@ class TrojanInboundObject {
     }
 }
 
+/** Trojan 出站配置 */
 class TrojanOutboundObject {
+    /** 服务器列表 */
     servers: TrojanServerObject[];
 
+    /**
+     * TrojanOutboundObject
+     * @param servers 服务器配置
+     */
     constructor(servers: TrojanServerObject | TrojanServerObject[]) {
         if (servers instanceof TrojanServerObject) servers = [servers];
         this.servers = servers;
