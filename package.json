@@ -1,6 +1,6 @@
 {
   "name": "v2script",
-  "version": "2.0.3",
+  "version": "2.0.4",
   "author": "seenight",
   "description": "v2ray subscription module",
   "main": "dist/index.js",
