@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SocksUserObject = exports.SocksServerObject = exports.SocksInboundObject = exports.SocksOutboundObject = void 0;
-var util_1 = require("../../util");
+var lib_1 = require("../../lib");
 /** 用户配置 */
 var SocksUserObject = /** @class */ (function () {
     /**
@@ -79,7 +79,7 @@ var SocksInboundObject = /** @class */ (function () {
         /** 用户等级 */
         this.userLevel = 0;
         this.auth = auth || this.auth;
-        if (account instanceof util_1.AccountObject)
+        if (account instanceof lib_1.AccountObject)
             account = [account];
         this.accounts = account || null;
     }

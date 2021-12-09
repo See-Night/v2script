@@ -1,4 +1,4 @@
-import { PROTOCOL, StreamSettingsObject } from "../../util";
+import { PROTOCOL, StreamSettingsObject } from "../../lib";
 import { DokodemodoorInboundObject, HTTPInboundObject, ShadowsocksInboundObject, SocksInboundObject, TrojanInboundObject, VlessInboundObject, VmessInboundObject } from "../protocol";
 /**
  * 当流量为指定类型时，按其中包括的目标地址重置当前连接的目标

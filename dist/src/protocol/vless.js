@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.VlessOutboundObject = exports.VlessInboundObject = exports.VlessClientObject = exports.VlessServerObject = exports.VlessUserObject = void 0;
-var util_1 = require("../../util");
+var lib_1 = require("../../lib");
 /** Vless 服务器配置 */
 var VlessServerObject = /** @class */ (function () {
     /**
@@ -76,7 +76,7 @@ var VlessInboundObject = /** @class */ (function () {
     function VlessInboundObject(clients, fallbacks) {
         if (clients instanceof VlessInboundObject)
             clients = [clients];
-        if (fallbacks instanceof util_1.FallbackObject)
+        if (fallbacks instanceof lib_1.FallbackObject)
             fallbacks = [fallbacks];
         this.clients = clients;
         this.fallbacks = fallbacks;

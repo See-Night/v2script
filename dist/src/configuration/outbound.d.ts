@@ -1,4 +1,4 @@
-import { PROTOCOL, StreamSettingsObject } from "../../util";
+import { PROTOCOL, StreamSettingsObject } from "../../lib";
 import { BlackholeOutboundObject, DnsOutboundObject, FreedomOutboundObject, HTTPOutboundObject, LoopbackOutboundObject, ShadowsocksOutboundObject, SocksOutboundObject, TrojanOutboundObject, VlessOutboundObject, VmessOutboundObject } from "../protocol";
 /**
  * 出站连接用于向远程网站或下一级代理服务器发送数据，可用的协议请见协议列表

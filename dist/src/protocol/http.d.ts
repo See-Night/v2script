@@ -1,4 +1,4 @@
-import { AccountObject } from "../../util";
+import { AccountObject } from "../../lib";
 /** HTTP 入站配置 */
 declare class HTTPInboundObject {
     /** 从客户端读取数据的超时设置（秒），`0` 表示不限时 */

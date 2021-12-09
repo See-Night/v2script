@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.HTTPServerObject = exports.HTTPUserObject = exports.HTTPOutboundObject = exports.HTTPInboundObject = void 0;
-var util_1 = require("../../util");
+var lib_1 = require("../../lib");
 /** HTTP 入站配置 */
 var HTTPInboundObject = /** @class */ (function () {
     function HTTPInboundObject() {
@@ -48,7 +48,7 @@ var HTTPServerObject = /** @class */ (function () {
         this.users = null;
         this.address = address;
         this.port = port;
-        this.users = (users instanceof util_1.AccountObject) ? [users] : users || null;
+        this.users = (users instanceof lib_1.AccountObject) ? [users] : users || null;
     }
     return HTTPServerObject;
 }());

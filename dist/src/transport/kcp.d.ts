@@ -1,4 +1,4 @@
-import { HEADER_OBJECT } from "../../util";
+import { HEADER_OBJECT } from "../../lib";
 /**
  * mKCP 使用 UDP 来模拟 TCP 连接，请确定主机上的防火墙配置正确
  *

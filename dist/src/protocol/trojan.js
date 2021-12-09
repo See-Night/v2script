@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TrojanOutboundObject = exports.TrojanInboundObject = exports.TrojanServerObject = exports.TrojanClientObject = void 0;
-var util_1 = require("../../util");
+var lib_1 = require("../../lib");
 /** Trojan 客户端配置 */
 var TrojanClientObject = /** @class */ (function () {
     /**
@@ -48,7 +48,7 @@ var TrojanInboundObject = /** @class */ (function () {
     function TrojanInboundObject(clients, fallbacks) {
         if (clients instanceof TrojanClientObject)
             clients = [clients];
-        if (fallbacks instanceof util_1.FallbackObject)
+        if (fallbacks instanceof lib_1.FallbackObject)
             fallbacks = [fallbacks];
         this.clients = clients;
         this.fallbacks = fallbacks;

@@ -1,4 +1,4 @@
-import { FallbackObject } from "../../util";
+import { FallbackObject } from "../../lib";
 /** Trojan 客户端配置 */
 declare class TrojanClientObject {
     /** 密码 */
