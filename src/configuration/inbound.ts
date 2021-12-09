@@ -1,4 +1,4 @@
-import { PROTOCOL, StreamSettingsObject } from "../../util";
+import { PROTOCOL, StreamSettingsObject } from "../../lib";
 import { DokodemodoorInboundObject, HTTPInboundObject, ShadowsocksInboundObject, SocksInboundObject, TrojanInboundObject, VlessInboundObject, VmessInboundObject } from "../protocol";
 
 /**

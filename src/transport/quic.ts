@@ -1,4 +1,4 @@
-import { HEADER_OBJECT } from "../../util";
+import { HEADER_OBJECT } from "../../lib";
 
 /** QUIC 加密方法 */
 const enum QUIC_SECURITY {

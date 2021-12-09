@@ -1,4 +1,4 @@
-import { PROTOCOL, StreamSettingsObject } from "../../util";
+import { PROTOCOL, StreamSettingsObject } from "../../lib";
 import { BlackholeOutboundObject, DnsOutboundObject, FreedomOutboundObject, HTTPOutboundObject, LoopbackOutboundObject, ShadowsocksOutboundObject, SocksOutboundObject, TrojanOutboundObject, VlessOutboundObject, VmessOutboundObject } from "../protocol";
 
 /**

@@ -1,4 +1,4 @@
-import { AccountObject } from "../../util";
+import { AccountObject } from "../../lib";
 
 /** 用户配置 */
 class SocksUserObject {

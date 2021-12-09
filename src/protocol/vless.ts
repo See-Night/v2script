@@ -1,4 +1,4 @@
-import { FallbackObject } from "../../util";
+import { FallbackObject } from "../../lib";
 
 /** Vless 服务器配置 */
 class VlessServerObject {

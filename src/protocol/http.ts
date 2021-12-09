@@ -1,4 +1,4 @@
-import { AccountObject } from "../../util";
+import { AccountObject } from "../../lib";
 
 /** HTTP 入站配置 */
 class HTTPInboundObject {
