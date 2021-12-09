@@ -1,7 +1,7 @@
 /**
  * V2Ray 中可以开放一些 API 以便远程调用
  * 
- * 这些 API 都基于 gRPC (opens new window),
+ * 这些 API 都基于 [gRPC](https://grpc.io/),
  * 大多数用户并不会用到此 API，新手可以直接忽略这一项
  * 
  * 当远程控制开启时，V2Ray 会自建一个出站代理，以 tag 配置的值为标识,

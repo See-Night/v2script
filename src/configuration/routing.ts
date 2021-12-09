@@ -123,10 +123,10 @@ class RuleObject {
     /**
      * 一个数组，数组内每一项代表一个 IP 范围。当某一项匹配目标 IP 时，此规则生效。有以下几种形式：
      * * IP：形如 127.0.0.1
-     * * CIDR (opens new window)：形如 10.0.0.0/8
+     * * [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)：形如 10.0.0.0/8
      * * GeoIP：
-     *    * 形如 `geoip:cn` 为正向匹配，即为匹配「中国大陆 IP 地址」。后面跟双字符国家或地区代码 (opens new window)，支持所有可以上网的国家和地区
-     *    * 形如 `geoip:!cn` 为反向匹配，即为匹配「非中国大陆 IP 地址」。后面跟双字符国家或地区代码 (opens new window)，支持所有可以上网的国家和地区
+     *    * 形如 `geoip:cn` 为正向匹配，即为匹配「中国大陆 IP 地址」。后面跟双字符[国家或地区代码](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)，支持所有可以上网的国家和地区
+     *    * 形如 `geoip:!cn` 为反向匹配，即为匹配「非中国大陆 IP 地址」。后面跟双字符[国家或地区代码](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)，支持所有可以上网的国家和地区
      *    * 特殊值：`geoip:private`（V2Ray 3.5+），包含所有私有地址，如 127.0.0.1
      * * 从文件中加载 IP：
      *    * 形如 `ext:file:tag` 和 `ext-ip:file:tag` 为正向匹配，即为匹配 「tag 内的 IP 地址」
@@ -184,7 +184,7 @@ class RuleObject {
     /**
      * （V2Ray 4.18+）一段脚本，用于检测流量的属性值。当此脚本返回真值时，此规则生效
      * 
-     * 脚本语言为 Starlark (opens new window)，它的语法是 Python 的子集。脚本接受一个全局变量 attrs，其中包含了流量相关的属性
+     * 脚本语言为 [Starlark](https://github.com/bazelbuild/starlark)，它的语法是 Python 的子集。脚本接受一个全局变量 attrs，其中包含了流量相关的属性
      * 
      * 目前只有 HTTP 入站代理会设置这一属性
      * 

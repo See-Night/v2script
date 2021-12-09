@@ -58,7 +58,8 @@ var InboundObject = /** @class */ (function () {
          * 除此之外，必须指定一个现有网卡的地址
          *
          * v4.32.0+，支持填写 Unix domain socket，格式为绝对路径，形如 "/dev/shm/domain.socket"，
-         * 可在开头加 "@" 代表 abstract (opens new window)，"@@" 则代表带 padding 的 abstract
+         * 可在开头加 "@" 代表 [abstract](https://www.man7.org/linux/man-pages/man7/unix.7.html)，
+         * "@@" 则代表带 padding 的 abstract
          *
          * 填写 Unix domain socket 时，port 和 allocate 将被忽略，协议暂时可选 VLESS、VMess、Trojan，
          * 传输方式可选 TCP、WebSocket、HTTP/2
