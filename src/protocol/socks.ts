@@ -1,52 +1,117 @@
-/**
- * 标准 Socks 协议实现
- * 兼容 Socks 4、Socks 4a 和 Socks 5
- */
+import { AccountObject } from "../../lib";
 
-import { AUTH } from "../common";
+/** 用户配置 */
+class SocksUserObject {
+    /** 用户名 */
+    user: string;
 
-export class socks_inbound {
-    auth: string = AUTH.noauth;
+    /** 密码 */
+    pass: string;
+
+    /** 用户等级 */
+    level: number = 0;
+
+    /**
+     * SocksUserObject
+     * @param user 用户名
+     * @param pass 密码
+     */
+    constructor(user: string, pass: string) {
+        this.user = user;
+        this.pass = pass;
+    }
+}
+
+/** Socks 服务器配置 */
+class SocksServerObject {
+    /** 服务器地址 */
+    address: string;
+
+    /** 服务器端口 */
+    port: number;
+
+    /** 用户列表 */
+    users: SocksUserObject[] = [];
+
+    /**
+     * ServerObject
+     * @param address 服务器地址
+     * @param port 服务器端口
+     */
+    constructor(address: string, port: number) {
+        this.address = address;
+        this.port = port;
+    }
+}
+
+/** Socks 出站配置 */
+class SocksOutboundObject {
+    /** 服务器列表 */
+    servers: SocksServerObject[];
+
+    /** Socks 版本 */
+    version: "5" | "4a" | "4";
+
+    /**
+     * SocksOutbound
+     * @param version Socks 协议版本
+     */
+    constructor(version: "5" | "4a" | "4", servers: SocksServerObject | SocksServerObject[]) {
+        this.version = version;
+
+        if (servers instanceof SocksServerObject) servers = [servers];
+        this.servers = servers;
+    }
+}
+
+/** Socks 认证方法 */
+const enum SOCKS_AUTH {
+    /** 不认证 */
+    noauth = "noauth",
+
+    /** 密码认证 */
+    password = "password"
+}
+
+/** Socks 入站配置 */
+class SocksInboundObject {
+    /** 认证方法 */
+    auth: SOCKS_AUTH = SOCKS_AUTH.noauth;
+
+    /**
+     * 一个数组，数组中每个元素为一个用户帐号
+     * 此选项仅当 auth 为 password 时有效。 
+     */
+    accounts: AccountObject[] = null;
+
+    /** 是否开启 UDP 协议的支持 */
     udp: boolean = false;
+
+    /** 
+     * SOCKS5 通过 UDP ASSOCIATE 命令建立 UDP 会话。服务端在对客户端发来的该命令的回复中，指定客户端发包的目标地址
+     * 
+     * v4.34.0+: 默认值为空，此时对于通过本地回环 IPv4/IPv6 连接的客户端，
+     * 回复对应的回环 IPv4/IPv6 地址；对于非本机的客户端，回复当前入站的监听地址
+     * 
+     * v4.33.0 及更早版本: 默认值 127.0.0.1。
+     * 你可以通过配置此项使 V2Ray 固定回复你配置的地址。如果你不知道此项的作用，留空即可
+     */
     ip: string = null;
 
-    /**
-     * 
-     * @param auth Socks 协议的认证方式: noauth匿名认证/password密码认证
-     * @param accounts 账户信息，仅当auth为password时有效
-     * @param udp 是否开启 UDP 协议的支持。默认值为 false
-     * @param ip 当开启 UDP 时，V2Ray 需要知道本机的 IP 地址。默认值为"127.0.0.1"
-     * 
-     */
-    constructor(auth: string = AUTH.noauth, accounts: {user: string, password: string} = null, udp: boolean = false, ip: string = null) {
-        this.auth = auth;
-        if (auth === 'password') {
-            this['accounts'] = []
-            this['accounts'].push({ user: accounts.user, password: accounts.password});
-        }
+    /** 用户等级 */
+    userLevel: number = 0;
 
-        this.udp = udp;
-        this.ip = ip;
+    /**
+     * SocksInboundObject
+     * @param auth 认证方法
+     * @param account 用户列表
+     */
+    constructor(auth?: SOCKS_AUTH, account?: AccountObject | AccountObject[]) {
+        this.auth = auth || this.auth;
+
+        if (account instanceof AccountObject) account = [account];
+        this.accounts = account || null;
     }
 }
 
-export class socks_outbound {
-    servers = [{
-        address: '127.0.0.1',
-        port: 10080,
-        users: []
-    }]
-    
-    /**
-     * 
-     * @param address 服务器地址。
-     * @param port 服务器端口
-     * @param users 用户列表，其中每一项一个用户配置。
-     * 
-     */
-    constructor(address: string = "127.0.0.1", port: number, users?: { user: string, pass: string}) {
-        this.servers[0].address = address;
-        this.servers[0].port = port;
-        this.servers[0].users.push(users);
-    }
-}
+export { SocksOutboundObject, SocksInboundObject, SOCKS_AUTH, SocksServerObject, SocksUserObject };

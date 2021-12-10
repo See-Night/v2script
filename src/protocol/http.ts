@@ -1,65 +1,83 @@
-/**
- * HTTP 的配置分为两部分
- * InboundConfigurationObject和OutboundConfigurationObject，
- * 分别对应入站和出站协议配置中的settings项。
- */
+import { AccountObject } from "../../lib";
 
-export class http_inbound {
-    /**
-     * 应该注意，虽然http inbound可以提供公共服务
-     * 但http协议没有对传输加密，不适宜经公网中传输
-     * 更容易成为被人用作攻击的肉鸡
-     * http inbound更有意义的用法是在局域网或本机环境下监听
-     * 为其他程序提供本地服务
-     * 
-     * 一般自用本地监听建议不要设置http协议的settings
-     */
-
+/** HTTP 入站配置 */
+class HTTPInboundObject {
+    /** 从客户端读取数据的超时设置（秒），`0` 表示不限时 */
     timeout: number = 300;
-    accounts: { user: string, pass: string}[] = [];
+
+    /** 
+     * 一个数组，数组中每个元素为一个用户帐号。默认值为空
+     * 
+     * 当 accounts 非空时，HTTP 代理将对入站连接进行 `Basic Authentication` 验证 
+     */
+    accounts: AccountObject[] = [];
+
+    /** 当为 `true` 时，会转发所有 HTTP 请求，而非只是代理请求。若配置不当，开启此选项会导致死循环 */
     allowTransparent: boolean = false;
 
+    /** 用户等级，所有连接使用这一等级 */
+    userLevel: number = 0;
+}
+
+/** HTTP 出站配置 */
+class HTTPOutboundObject {
+    /** HTTP 代理服务器配置，若配置多个，循环使用 (RoundRobin) */
+    servers: HTTPServerObject [];
+
     /**
-     * 
-     * @param u 用户名
-     * @param p 密码
-     * @param timeout 从客户端读取数据的超时设置（秒）
-     * @param allowTransparent 当为true时，会转发所有 HTTP 请求，而非只是代理请求。若配置不当，开启此选项会导致死循环
-     * 
+     * HTTPOutboundObject
+     * @param servers HTTP 代理服务器配置
      */
-    constructor(u: string = '', p: string = '', timeout: number = 300, allowTransparent: boolean = false) {
-        this.accounts.push({ user: u, pass: p});
-        this.timeout = timeout;
-        this.allowTransparent = allowTransparent;
+    constructor(servers: HTTPServerObject | HTTPServerObject[]) {
+        if (servers instanceof HTTPServerObject) servers = [servers];
+        this.servers = servers;
     }
 }
 
-export class http_outbound {
-    servers: {
-        address: string,
-        port: number,
-        users: {
-            user: string,
-            pass: string
-        }[]
-    }[] = [];
+/** HTTP 代理服务器配置 */
+class HTTPServerObject {
+    /** HTTP 代理服务器地址 */
+    address: string;
+
+    /** HTTP 代理服务器端口 */
+    port: number;
+
+    /** 一个数组，数组中每个元素为一个用户帐号 */
+    users: AccountObject[] = null;
 
     /**
-     * 
-     * @param address HTTP代理服务器地址
-     * @param port HTTP代理服务器端口
-     * @param user 账号
+     * HTTPServerObject
+     * @param address HTTP 代理服务器地址
+     * @param port HTTP 代理服务器端口
+     * @param users 用户帐号
+     */
+    constructor(address: string, port: number, users?: AccountObject | AccountObject[]) {
+        this.address = address;
+        this.port = port;
+        this.users = (users instanceof AccountObject)?[users]:users || null;
+    }
+}
+
+/** 用户帐号 */
+class HTTPUserObject {
+    /** 用户名 */
+    user: string;
+
+    /** 密码 */
+    pass: string;
+
+    /** 用户等级 */
+    userLevel: number = 0;
+
+    /**
+     * UserObject 
+     * @param user 用户名
      * @param pass 密码
-     * 
      */
-    constructor(address: string, port: number, user: string, pass: string) {
-        this.servers.push({
-            address: address,
-            port: port,
-            users: [{
-                user: user,
-                pass: pass
-            }]
-        })
+    constructor(user: string, pass: string) {
+        this.user = user;
+        this.pass = pass;
     }
 }
+
+export { HTTPInboundObject, HTTPOutboundObject, HTTPUserObject, HTTPServerObject };

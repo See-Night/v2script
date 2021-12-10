@@ -1,6 +1,6 @@
 {
-  "name": "ts2ray",
-  "version": "1.1.18",
+  "name": "v2script",
+  "version": "2.0.5",
   "author": "seenight",
   "description": "v2ray subscription module",
   "main": "dist/index.js",
@@ -11,15 +11,12 @@
   "license": "MIT",
   "dependencies": {
     "@types/node": "latest",
-    "nodejs-base64": "latest",
-    "sync-request": "latest",
-    "typescript": "latest",
-    "xmcommon": "latest"
+    "typescript": "latest"
   },
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/See-Night/ts2ray.git"
+    "url": "git+https://github.com/See-Night/v2script.git"
   },
   "keywords": [
     "v2ray",
@@ -27,10 +24,10 @@
     "typescript"
   ],
   "bugs": {
-    "url": "https://github.com/See-Night/ts2ray/issues"
+    "url": "https://github.com/See-Night/v2script/issues"
   },
-  "homepage": "https://github.com/See-Night/ts2ray#readme",
+  "homepage": "https://github.com/See-Night/v2script#readme",
   "directories": {
-    "doc": "docs"
+    "lib": "lib"
   }
 }

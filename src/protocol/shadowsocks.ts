@@ -1,79 +1,99 @@
-/**
- * Shadowsocks 协议，包含入站和出站两部分，兼容大部分其它版本的实现
- * 与官方版本的兼容性：
- * - 支持 TCP 和 UDP 数据包转发，其中 UDP 可选择性关闭；
- * - 支持 OTA；
- * ----- 客户端可选开启或关闭；
- * ----- 服务器端可强制开启、关闭或自适应；
- * - 加密方式（其中 AEAD 加密方式在 V2Ray 3.0 中加入）：
- * ----- aes-256-cfb
- * ----- aes-128-cfb
- * ----- chacha20
- * ----- chacha20-ietf
- * ----- aes-256-gcm
- * ----- aes-128-gcm
- * ----- chacha20-poly1305 或称 chacha20-ietf-poly1305
- * - 插件：
- * ----- 通过 Standalone 模式支持 obfs
- */
+/** Shadowsocks 加密方法 */
+const enum SHADOWSOCKS_METHOD {
+    aes_256_gcm = "aes-256-gcm",
+    aes_128_gcm = "aes-128-gcm",
+    chacha20_poly1305 = "chacha20-poly1305",
+    chacha20_ietf_poly1305 = "chacha20-ietf-poly1305",
+    none = "none"
+}
 
-import { NETWORK, SHADOWSOCKSMETHOD } from "../common";
+/** Shadowssocks 可接收的网络连接类型 */
+const enum SHADOWSOCKS_NETWORK {
+    tcp = "tcp",
+    udp = "udp",
+    tcp_udp = "tcp,udp"
+}
 
-export class shadowsocks_inbound {
-    method: string = SHADOWSOCKSMETHOD.AES128CFB;
+/** Shadowsocks 入站配置 */
+class ShadowsocksInboundObject {
+    /** 邮件地址，用于标识用户 */
+    email: string;
+
+    /** 加密方法 */
+    method: SHADOWSOCKS_METHOD;
+
+    /** 密码 */
     password: string;
-    ota: boolean = true;
-    network: string = NETWORK.tcp;
+
+    /** 用户等级 */
+    level: number = 0;
+
+    /** 可接收的网络连接类型 */
+    network: SHADOWSOCKS_NETWORK = SHADOWSOCKS_NETWORK.tcp;
 
     /**
-     * 
+     * ShadowsocksInboundObject
+     * @param email 邮件地址
      * @param password 密码
-     * @param method 加密方法
-     * ------ aes-256-cfb
-     * ------ aes-128-cfb
-     * ------ chacha20
-     * ------ chacha20-ietf
-     * ------ aes-256-gcm
-     * ------ aes-128-gcm
-     * ------ chacha20-poly1305
-     * @param network 可接收的网络连接类型，默认值为"tcp"
-     * 
+     * @param method 加密方式
      */
-    constructor(password: string, method?: string, network?: string) {
+    constructor(email: string, password: string, method: SHADOWSOCKS_METHOD) {
+        this.email = email;
         this.password = password;
-        this.method = method?method:this.method;
-        this.network = network?network:this.network;
+        this.method = method;
     }
 }
 
-export class shadowsocks_outbound {
-    servers = [{
-        address: "",
-        port: 10010,
-        method: SHADOWSOCKSMETHOD.AES128CFB,
-        password: "",
-        ota: false
-    }]
+/** Shadowsocks 服务器配置 */
+class ShadowsocksServerObject {
+    /** 邮件地址，用于标识用户 */
+    email: string;
+
+    /** 服务器地址，支持 IPv4、IPv6 和域名 */
+    address: string;
+
+    /** 服务器端口 */
+    port: number;
+
+    /** 加密方法 */
+    method: SHADOWSOCKS_METHOD;
+
+    /** 密码 */
+    password: string;
+
+    /** 用户等级 */
+    level: number = 0;
 
     /**
-     * 
-     * @param address 服务器地址
-     * @param port 服务器端口
+     * ShadowsocksServerObject
+     * @param email 邮件地址
+     * @param address Shadowsocks 服务器地址，支持 IPv4、IPv6 和域名
+     * @param port Shadowsocks 服务器端口
      * @param password 密码
-     * @param method 加密方法
-     * ------ aes-256-cfb
-     * ------ aes-128-cfb
-     * ------ chacha20
-     * ------ chacha20-ietf
-     * ------ aes-256-gcm
-     * ------ aes-128-gcm
-     * ------ chacha20-poly1305
-     * 
+     * @param method 加密方式
      */
-    constructor(address: string, port: number, password: string, method: string = SHADOWSOCKSMETHOD.AES128CFB) {
-        this.servers[0].address = address;
-        this.servers[0].port = port;
-        this.servers[0].password = password;
-        this.servers[0].method = method;
+    constructor(email: string, address: string, port: number, password: string, method: SHADOWSOCKS_METHOD) {
+        this.email = email;
+        this.address = address;
+        this.port = port;
+        this.method = method;
+        this.password = password;
     }
 }
+
+/** Shadowsocks 出站配置 */
+class ShadowsocksOutboundObject {
+    /** 服务器列表 */
+    servers: ShadowsocksServerObject[];
+
+    /**
+     * ShadowsocksOutboundObject
+     * @param servers Shadowsocks服务
+     */
+    constructor(servers: ShadowsocksServerObject | ShadowsocksServerObject[]) {
+        if (servers instanceof ShadowsocksServerObject) servers = [servers];
+        this.servers = servers;
+    }
+}
+
+export { SHADOWSOCKS_METHOD, SHADOWSOCKS_NETWORK, ShadowsocksInboundObject, ShadowsocksOutboundObject, ShadowsocksServerObject };

@@ -1,289 +1,116 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.vmess_outbound = exports.vmess_inbound = exports.socks_outbound = exports.socks_inbound = exports.shadowsocks_outbound = exports.shadowsocks_inbound = exports.mtproto_outbound = exports.mtproto_inbound = exports.http_outbound = exports.http_inbound = exports.freedom_outbound = exports.dns_outbound = exports.blackhole_outbound = exports.tlsSettings = exports.quicSettings = exports.dsSettings = exports.httpSettings = exports.wsSettings = exports.kcpSettings = exports.tcpSettings = exports.ruleObject = exports.streamSettings = exports.routing = exports.outbound = exports.inbound = exports.Log = exports.dns = exports.common = exports.v2ray = exports.v2sub = void 0;
-var sync_request_1 = require("sync-request");
-var nodejs_base64_1 = require("nodejs-base64");
-var v2ray_1 = require("./v2ray");
-Object.defineProperty(exports, "v2ray", { enumerable: true, get: function () { return v2ray_1.v2ray; } });
-var common = require("./common");
-exports.common = common;
-var common_1 = require("./common");
-var structure_1 = require("./structure");
-Object.defineProperty(exports, "dns", { enumerable: true, get: function () { return structure_1.dns; } });
-Object.defineProperty(exports, "Log", { enumerable: true, get: function () { return structure_1.Log; } });
-Object.defineProperty(exports, "inbound", { enumerable: true, get: function () { return structure_1.inbound; } });
-Object.defineProperty(exports, "outbound", { enumerable: true, get: function () { return structure_1.outbound; } });
-Object.defineProperty(exports, "routing", { enumerable: true, get: function () { return structure_1.routing; } });
-Object.defineProperty(exports, "streamSettings", { enumerable: true, get: function () { return structure_1.streamSettings; } });
-Object.defineProperty(exports, "ruleObject", { enumerable: true, get: function () { return structure_1.ruleObject; } });
-Object.defineProperty(exports, "tcpSettings", { enumerable: true, get: function () { return structure_1.tcpSettings; } });
-Object.defineProperty(exports, "kcpSettings", { enumerable: true, get: function () { return structure_1.kcpSettings; } });
-Object.defineProperty(exports, "wsSettings", { enumerable: true, get: function () { return structure_1.wsSettings; } });
-Object.defineProperty(exports, "httpSettings", { enumerable: true, get: function () { return structure_1.httpSettings; } });
-Object.defineProperty(exports, "dsSettings", { enumerable: true, get: function () { return structure_1.dsSettings; } });
-Object.defineProperty(exports, "quicSettings", { enumerable: true, get: function () { return structure_1.quicSettings; } });
-Object.defineProperty(exports, "tlsSettings", { enumerable: true, get: function () { return structure_1.tlsSettings; } });
-var protocol_1 = require("./protocol");
-Object.defineProperty(exports, "blackhole_outbound", { enumerable: true, get: function () { return protocol_1.blackhole_outbound; } });
-Object.defineProperty(exports, "dns_outbound", { enumerable: true, get: function () { return protocol_1.dns_outbound; } });
-Object.defineProperty(exports, "freedom_outbound", { enumerable: true, get: function () { return protocol_1.freedom_outbound; } });
-Object.defineProperty(exports, "http_inbound", { enumerable: true, get: function () { return protocol_1.http_inbound; } });
-Object.defineProperty(exports, "http_outbound", { enumerable: true, get: function () { return protocol_1.http_outbound; } });
-Object.defineProperty(exports, "mtproto_inbound", { enumerable: true, get: function () { return protocol_1.mtproto_inbound; } });
-Object.defineProperty(exports, "mtproto_outbound", { enumerable: true, get: function () { return protocol_1.mtproto_outbound; } });
-Object.defineProperty(exports, "shadowsocks_inbound", { enumerable: true, get: function () { return protocol_1.shadowsocks_inbound; } });
-Object.defineProperty(exports, "shadowsocks_outbound", { enumerable: true, get: function () { return protocol_1.shadowsocks_outbound; } });
-Object.defineProperty(exports, "socks_inbound", { enumerable: true, get: function () { return protocol_1.socks_inbound; } });
-Object.defineProperty(exports, "socks_outbound", { enumerable: true, get: function () { return protocol_1.socks_outbound; } });
-Object.defineProperty(exports, "vmess_inbound", { enumerable: true, get: function () { return protocol_1.vmess_inbound; } });
-Object.defineProperty(exports, "vmess_outbound", { enumerable: true, get: function () { return protocol_1.vmess_outbound; } });
-var fs = require("fs");
-var sub = /** @class */ (function () {
-    function sub(ps, ip, port, id, aid, net, type, host, path, tls) {
-        if (aid === void 0) { aid = 32; }
-        if (type === void 0) { type = "none"; }
-        if (host === void 0) { host = ""; }
-        if (path === void 0) { path = ""; }
-        if (tls === void 0) { tls = ""; }
-        this.ps = ps;
-        this.ip = ip;
-        this.port = port;
-        this.id = id;
-        this.aid = aid;
-        this.net = net;
-        this.type = type;
-        this.host = host;
-        this.path = path;
-        this.tls = tls;
-    }
-    return sub;
-}());
-var v2sub = /** @class */ (function () {
+exports.VlessOutboundObject = exports.VlessInboundObject = exports.VlessClientObject = exports.VlessServerObject = exports.VlessUserObject = exports.TrojanOutboundObject = exports.TrojanInboundObject = exports.TrojanServerObject = exports.TrojanClientObject = exports.SocksUserObject = exports.SocksServerObject = exports.SocksInboundObject = exports.SocksOutboundObject = exports.ShadowsocksServerObject = exports.ShadowsocksOutboundObject = exports.ShadowsocksInboundObject = exports.LoopbackOutboundObject = exports.HTTPServerObject = exports.HTTPUserObject = exports.HTTPOutboundObject = exports.HTTPInboundObject = exports.FreedomOutboundObject = exports.DokodemodoorInboundObject = exports.DnsOutboundObject = exports.BlackholeOutboundObject = exports.TransportObject = exports.StatsObject = exports.BalancerObject = exports.RuleObject = exports.RoutingObject = exports.PortalObject = exports.BridgeObject = exports.ReverseObject = exports.SystemPolicyObject = exports.LevelPolicyObject = exports.PolicyObject = exports.MuxObject = exports.ProxySettingsObject = exports.OutboundObject = exports.ObservatoryObject = exports.LogObject = exports.InboundObject = exports.AllocateObject = exports.SniffingObject = exports.FakeDnsObject = exports.DnsObject = exports.DnsServerObject = exports.BrowserForwarderObject = exports.ApiObject = exports.v2ray = void 0;
+exports.FallbackObject = exports.AccountObject = exports.StreamSettingsObject = exports.SockoptObject = exports.grpcObject = exports.DomainSocketObject = exports.QUICObject = exports.HttpObject = exports.WebSocketObject = exports.KcpObject = exports.TcpObject = exports.HttpHeaderobject = exports.NoneHeaderObject = exports.VmessServerObject = exports.DefaultObject = exports.DetourObject = exports.VmessClientObject = exports.VmessInboundObject = exports.VmessOutboundObject = exports.VmessUserObject = void 0;
+var src_1 = require("./src");
+Object.defineProperty(exports, "ApiObject", { enumerable: true, get: function () { return src_1.ApiObject; } });
+Object.defineProperty(exports, "BrowserForwarderObject", { enumerable: true, get: function () { return src_1.BrowserForwarderObject; } });
+Object.defineProperty(exports, "DnsServerObject", { enumerable: true, get: function () { return src_1.DnsServerObject; } });
+Object.defineProperty(exports, "DnsObject", { enumerable: true, get: function () { return src_1.DnsObject; } });
+Object.defineProperty(exports, "FakeDnsObject", { enumerable: true, get: function () { return src_1.FakeDnsObject; } });
+Object.defineProperty(exports, "SniffingObject", { enumerable: true, get: function () { return src_1.SniffingObject; } });
+Object.defineProperty(exports, "AllocateObject", { enumerable: true, get: function () { return src_1.AllocateObject; } });
+Object.defineProperty(exports, "InboundObject", { enumerable: true, get: function () { return src_1.InboundObject; } });
+Object.defineProperty(exports, "LogObject", { enumerable: true, get: function () { return src_1.LogObject; } });
+Object.defineProperty(exports, "ObservatoryObject", { enumerable: true, get: function () { return src_1.ObservatoryObject; } });
+Object.defineProperty(exports, "OutboundObject", { enumerable: true, get: function () { return src_1.OutboundObject; } });
+Object.defineProperty(exports, "ProxySettingsObject", { enumerable: true, get: function () { return src_1.ProxySettingsObject; } });
+Object.defineProperty(exports, "MuxObject", { enumerable: true, get: function () { return src_1.MuxObject; } });
+Object.defineProperty(exports, "PolicyObject", { enumerable: true, get: function () { return src_1.PolicyObject; } });
+Object.defineProperty(exports, "LevelPolicyObject", { enumerable: true, get: function () { return src_1.LevelPolicyObject; } });
+Object.defineProperty(exports, "SystemPolicyObject", { enumerable: true, get: function () { return src_1.SystemPolicyObject; } });
+Object.defineProperty(exports, "ReverseObject", { enumerable: true, get: function () { return src_1.ReverseObject; } });
+Object.defineProperty(exports, "BridgeObject", { enumerable: true, get: function () { return src_1.BridgeObject; } });
+Object.defineProperty(exports, "PortalObject", { enumerable: true, get: function () { return src_1.PortalObject; } });
+Object.defineProperty(exports, "RoutingObject", { enumerable: true, get: function () { return src_1.RoutingObject; } });
+Object.defineProperty(exports, "RuleObject", { enumerable: true, get: function () { return src_1.RuleObject; } });
+Object.defineProperty(exports, "BalancerObject", { enumerable: true, get: function () { return src_1.BalancerObject; } });
+Object.defineProperty(exports, "StatsObject", { enumerable: true, get: function () { return src_1.StatsObject; } });
+Object.defineProperty(exports, "TransportObject", { enumerable: true, get: function () { return src_1.TransportObject; } });
+Object.defineProperty(exports, "BlackholeOutboundObject", { enumerable: true, get: function () { return src_1.BlackholeOutboundObject; } });
+Object.defineProperty(exports, "DnsOutboundObject", { enumerable: true, get: function () { return src_1.DnsOutboundObject; } });
+Object.defineProperty(exports, "DokodemodoorInboundObject", { enumerable: true, get: function () { return src_1.DokodemodoorInboundObject; } });
+Object.defineProperty(exports, "FreedomOutboundObject", { enumerable: true, get: function () { return src_1.FreedomOutboundObject; } });
+Object.defineProperty(exports, "HTTPInboundObject", { enumerable: true, get: function () { return src_1.HTTPInboundObject; } });
+Object.defineProperty(exports, "HTTPOutboundObject", { enumerable: true, get: function () { return src_1.HTTPOutboundObject; } });
+Object.defineProperty(exports, "HTTPUserObject", { enumerable: true, get: function () { return src_1.HTTPUserObject; } });
+Object.defineProperty(exports, "HTTPServerObject", { enumerable: true, get: function () { return src_1.HTTPServerObject; } });
+Object.defineProperty(exports, "LoopbackOutboundObject", { enumerable: true, get: function () { return src_1.LoopbackOutboundObject; } });
+Object.defineProperty(exports, "ShadowsocksInboundObject", { enumerable: true, get: function () { return src_1.ShadowsocksInboundObject; } });
+Object.defineProperty(exports, "ShadowsocksOutboundObject", { enumerable: true, get: function () { return src_1.ShadowsocksOutboundObject; } });
+Object.defineProperty(exports, "ShadowsocksServerObject", { enumerable: true, get: function () { return src_1.ShadowsocksServerObject; } });
+Object.defineProperty(exports, "SocksOutboundObject", { enumerable: true, get: function () { return src_1.SocksOutboundObject; } });
+Object.defineProperty(exports, "SocksInboundObject", { enumerable: true, get: function () { return src_1.SocksInboundObject; } });
+Object.defineProperty(exports, "SocksServerObject", { enumerable: true, get: function () { return src_1.SocksServerObject; } });
+Object.defineProperty(exports, "SocksUserObject", { enumerable: true, get: function () { return src_1.SocksUserObject; } });
+Object.defineProperty(exports, "TrojanClientObject", { enumerable: true, get: function () { return src_1.TrojanClientObject; } });
+Object.defineProperty(exports, "TrojanServerObject", { enumerable: true, get: function () { return src_1.TrojanServerObject; } });
+Object.defineProperty(exports, "TrojanInboundObject", { enumerable: true, get: function () { return src_1.TrojanInboundObject; } });
+Object.defineProperty(exports, "TrojanOutboundObject", { enumerable: true, get: function () { return src_1.TrojanOutboundObject; } });
+Object.defineProperty(exports, "VlessUserObject", { enumerable: true, get: function () { return src_1.VlessUserObject; } });
+Object.defineProperty(exports, "VlessServerObject", { enumerable: true, get: function () { return src_1.VlessServerObject; } });
+Object.defineProperty(exports, "VlessClientObject", { enumerable: true, get: function () { return src_1.VlessClientObject; } });
+Object.defineProperty(exports, "VlessInboundObject", { enumerable: true, get: function () { return src_1.VlessInboundObject; } });
+Object.defineProperty(exports, "VlessOutboundObject", { enumerable: true, get: function () { return src_1.VlessOutboundObject; } });
+Object.defineProperty(exports, "VmessUserObject", { enumerable: true, get: function () { return src_1.VmessUserObject; } });
+Object.defineProperty(exports, "VmessOutboundObject", { enumerable: true, get: function () { return src_1.VmessOutboundObject; } });
+Object.defineProperty(exports, "VmessInboundObject", { enumerable: true, get: function () { return src_1.VmessInboundObject; } });
+Object.defineProperty(exports, "VmessClientObject", { enumerable: true, get: function () { return src_1.VmessClientObject; } });
+Object.defineProperty(exports, "DetourObject", { enumerable: true, get: function () { return src_1.DetourObject; } });
+Object.defineProperty(exports, "DefaultObject", { enumerable: true, get: function () { return src_1.DefaultObject; } });
+Object.defineProperty(exports, "VmessServerObject", { enumerable: true, get: function () { return src_1.VmessServerObject; } });
+Object.defineProperty(exports, "NoneHeaderObject", { enumerable: true, get: function () { return src_1.NoneHeaderObject; } });
+Object.defineProperty(exports, "HttpHeaderobject", { enumerable: true, get: function () { return src_1.HttpHeaderobject; } });
+Object.defineProperty(exports, "TcpObject", { enumerable: true, get: function () { return src_1.TcpObject; } });
+Object.defineProperty(exports, "KcpObject", { enumerable: true, get: function () { return src_1.KcpObject; } });
+Object.defineProperty(exports, "WebSocketObject", { enumerable: true, get: function () { return src_1.WebSocketObject; } });
+Object.defineProperty(exports, "HttpObject", { enumerable: true, get: function () { return src_1.HttpObject; } });
+Object.defineProperty(exports, "QUICObject", { enumerable: true, get: function () { return src_1.QUICObject; } });
+Object.defineProperty(exports, "DomainSocketObject", { enumerable: true, get: function () { return src_1.DomainSocketObject; } });
+Object.defineProperty(exports, "grpcObject", { enumerable: true, get: function () { return src_1.grpcObject; } });
+Object.defineProperty(exports, "SockoptObject", { enumerable: true, get: function () { return src_1.SockoptObject; } });
+/** v2ray */
+var v2ray = /** @class */ (function () {
     /**
-     *
-     * @param url 订阅地址
+     * v2ray
+     * @param inbounds 入站连接配置
+     * @param outbounds 出站连接配置
      */
-    function v2sub(url) {
-        this.subs = [];
-        this.url = url;
-        var res = sync_request_1.default('GET', url);
-        var body = res.getBody().toString();
-        var vmesses = nodejs_base64_1.base64decode(body).toString().replace(/\n\n/g, '').replace(/vmess:\/\//g, '').split('\n');
-        vmesses = vmesses.slice(0, vmesses.length - 1);
-        for (var i in vmesses) {
-            var q = JSON.parse(nodejs_base64_1.base64decode(vmesses[i]).split('\r\n').join(''));
-            this.subs.push(new sub(q.ps, q.add, q.port, q.id, q.aid, q.net));
-        }
+    function v2ray(inbounds, outbounds) {
+        /** 日志配置，表示 V2Ray 如何输出日志 */
+        this.log = new src_1.LogObject();
+        /** 远程控制 */
+        this.api = null;
+        /** 内置的 DNS 服务器，若此项不存在，则默认使用本机的 DNS 设置 */
+        this.dns = null;
+        /** 路由功能 */
+        this.routing = null;
+        /** 本地策略，可进行一些权限相关的配置 */
+        this.policy = new src_1.PolicyObject();
+        /** 用于配置 V2Ray 如何与其它服务器建立和使用网络连接 */
+        this.transport = null;
+        /** 统计信息 */
+        this.stats = new src_1.StatsObject();
+        /** 反向代理 */
+        this.reverse = null;
+        /** 虚拟 DNS 服务器 */
+        this.fakedns = [];
+        /** 浏览器转发模块 */
+        this.browserForwarder = null;
+        /** 连接观测模块 */
+        this.observatory = null;
+        if (inbounds instanceof src_1.InboundObject)
+            inbounds = [inbounds];
+        if (outbounds instanceof src_1.OutboundObject)
+            outbounds = [outbounds];
+        this.inbounds = inbounds;
+        this.outbounds = outbounds;
     }
-    v2sub.prototype.toConfig = function (ps, path) {
-        var v = new v2ray_1.v2ray();
-        for (var s in this.subs) {
-            if (ps === this.subs[s].ps) {
-                v.Log('', '', common_1.LOGLEVEL.warning);
-                v.Dns(['119.29.29.29']);
-                v.Inbound(new structure_1.inbound('proxy', 10080, '0.0.0.0', common_1.PROTOCOL.socks, new protocol_1.socks_inbound(common_1.AUTH.noauth)));
-                v.addInbound(new structure_1.inbound('proxy_http', 10809, '0.0.0.0', common_1.PROTOCOL.http, new protocol_1.socks_inbound(common_1.AUTH.noauth)));
-                v.Outbound(new structure_1.outbound('proxy_out', common_1.PROTOCOL.vmess, new protocol_1.vmess_outbound(this.subs[s].ip, Number(this.subs[s].port), this.subs[s].id), new structure_1.streamSettings(this.subs[s].net, this.subs[s].type)));
-                v.addOutbound(new structure_1.outbound('direct', common_1.PROTOCOL.freedom, null, null));
-                v.addOutbound(new structure_1.outbound('block', common_1.PROTOCOL.blackhole, null, null));
-                var routing_1 = v.Routing(common_1.DOMAINSTRATEGY.IPIfNonMatch);
-                routing_1.addRules(new structure_1.ruleObject(null, null, ['api'], 'api'));
-                routing_1.addRules(new structure_1.ruleObject([
-                    "geosite:google",
-                    "geosite:github",
-                    "geosite:netflix",
-                    "geosite:steam",
-                    "geosite:telegram",
-                    "geosite:tumblr",
-                    "geosite:speedtest",
-                    "geosite:bbc",
-                    "domain:gvt1.com",
-                    "domain:textnow.com",
-                    "domain:twitch.tv",
-                    "domain:snapcraft.io",
-                    "domain:snapchat.com",
-                    "domain:wikileaks.org",
-                    "domain:getmailbird.com",
-                    "domain:sublimetext.com",
-                    "domain:getmailspring.com",
-                    "domain:steamcommunity.com",
-                    "domain:steamstatic.com",
-                    "domain:rsshub.app",
-                    "domain:naver.com"
-                ], [
-                    "91.108.4.0/22",
-                    "91.108.8.0/22",
-                    "91.108.12.0/22",
-                    "91.108.20.0/22",
-                    "91.108.36.0/23",
-                    "91.108.38.0/23",
-                    "91.108.56.0/22",
-                    "149.154.160.0/20",
-                    "149.154.164.0/22",
-                    "149.154.172.0/22",
-                    "74.125.0.0/16",
-                    "173.194.0.0/16",
-                    "172.217.0.0/16",
-                    "216.58.200.0/24",
-                    "216.58.220.0/24",
-                    "91.108.56.116",
-                    "91.108.56.0/24",
-                    "109.239.140.0/24",
-                    "149.154.167.0/24",
-                    "149.154.175.0/24"
-                ], null, 'proxy_http'));
-                routing_1.addRules(new structure_1.ruleObject([
-                    "domain:12306.com",
-                    "domain:51ym.me",
-                    "domain:baidu.com",
-                    "domain:tencent.com",
-                    "domain:52pojie.cn",
-                    "domain:8686c.com",
-                    "domain:abercrombie.com",
-                    "domain:adobesc.com",
-                    "domain:agefans.tv",
-                    "domain:air-matters.com",
-                    "domain:air-matters.io",
-                    "domain:airtable.com",
-                    "domain:akadns.net",
-                    "domain:apache.org",
-                    "domain:api.crisp.chat",
-                    "domain:api.termius.com",
-                    "domain:appshike.com",
-                    "domain:appstore.com",
-                    "domain:aweme.snssdk.com",
-                    "domain:bababian.com",
-                    "domain:battle.net",
-                    "domain:beatsbydre.com",
-                    "domain:bet365.com",
-                    "domain:bilibili.cn",
-                    "domain:ccgslb.com",
-                    "domain:ccgslb.net",
-                    "domain:chunbo.com",
-                    "domain:chunboimg.com",
-                    "domain:clashroyaleapp.com",
-                    "domain:cloudsigma.com",
-                    "domain:cloudxns.net",
-                    "domain:cmfu.com",
-                    "domain:culturedcode.com",
-                    "domain:dct-cloud.com",
-                    "domain:didialift.com",
-                    "domain:douyutv.com",
-                    "domain:duokan.com",
-                    "domain:dytt8.net",
-                    "domain:easou.com",
-                    "domain:ecitic.net",
-                    "domain:eclipse.org",
-                    "domain:eudic.net",
-                    "domain:ewqcxz.com",
-                    "domain:fir.im",
-                    "domain:frdic.com",
-                    "domain:fresh-ideas.cc",
-                    "domain:godic.net",
-                    "domain:goodread.com",
-                    "domain:haibian.com",
-                    "domain:hdslb.net",
-                    "domain:hollisterco.com",
-                    "domain:hongxiu.com",
-                    "domain:hxcdn.net",
-                    "domain:images.unsplash.com",
-                    "domain:img4me.com",
-                    "domain:ipify.org",
-                    "domain:ixdzs.com",
-                    "domain:jd.hk",
-                    "domain:jianshuapi.com",
-                    "domain:jomodns.com",
-                    "domain:jsboxbbs.com",
-                    "domain:knewone.com",
-                    "domain:kuaidi100.com",
-                    "domain:lemicp.com",
-                    "domain:letvcloud.com",
-                    "domain:lizhi.io",
-                    "domain:localizecdn.com",
-                    "domain:lucifr.com",
-                    "domain:luoo.net",
-                    "domain:mai.tn",
-                    "domain:maven.org",
-                    "domain:miwifi.com",
-                    "domain:moji.com",
-                    "domain:moke.com",
-                    "domain:mtalk.google.com",
-                    "domain:mxhichina.com",
-                    "domain:myqcloud.com",
-                    "domain:myunlu.com",
-                    "domain:netease.com",
-                    "domain:nfoservers.com",
-                    "domain:nssurge.com",
-                    "domain:nuomi.com",
-                    "domain:ourdvs.com",
-                    "domain:overcast.fm",
-                    "domain:paypal.com",
-                    "domain:paypalobjects.com",
-                    "domain:pgyer.com",
-                    "domain:qdaily.com",
-                    "domain:qdmm.com",
-                    "domain:qin.io",
-                    "domain:qingmang.me",
-                    "domain:qingmang.mobi",
-                    "domain:qqurl.com",
-                    "domain:rarbg.to",
-                    "domain:rrmj.tv",
-                    "domain:ruguoapp.com",
-                    "domain:sm.ms",
-                    "domain:snwx.com",
-                    "domain:soku.com",
-                    "domain:startssl.com",
-                    "domain:store.steampowered.com",
-                    "domain:symcd.com",
-                    "domain:teamviewer.com",
-                    "domain:tmzvps.com",
-                    "domain:trello.com",
-                    "domain:trellocdn.com",
-                    "domain:ttmeiju.com",
-                    "domain:udache.com",
-                    "domain:uxengine.net",
-                    "domain:weather.bjango.com",
-                    "domain:weather.com",
-                    "domain:webqxs.com",
-                    "domain:weico.cc",
-                    "domain:wenku8.net",
-                    "domain:werewolf.53site.com",
-                    "domain:windowsupdate.com",
-                    "domain:wkcdn.com",
-                    "domain:workflowy.com",
-                    "domain:xdrig.com",
-                    "domain:xiaojukeji.com",
-                    "domain:xiaomi.net",
-                    "domain:xiaomicp.com",
-                    "domain:ximalaya.com",
-                    "domain:xitek.com",
-                    "domain:xmcdn.com",
-                    "domain:xslb.net",
-                    "domain:xteko.com",
-                    "domain:yach.me",
-                    "domain:yixia.com",
-                    "domain:yunjiasu-cdn.net",
-                    "domain:zealer.com",
-                    "domain:zgslb.net",
-                    "domain:zimuzu.tv",
-                    "domain:zmz002.com",
-                    "domain:samsungdm.com",
-                    "geoip:private",
-                    "geoip:cn",
-                    "geosite:cn"
-                ], null, null, 'direct'));
-                routing_1.addRules(new structure_1.ruleObject(["geosite:category-ads-all"], null, null, 'block'));
-                try {
-                    fs.writeFile(path + '/config.json', JSON.stringify(v, null, 4), function () { });
-                }
-                catch (err) {
-                    console.log(err);
-                }
-                break;
-            }
-        }
-    };
-    return v2sub;
+    return v2ray;
 }());
-exports.v2sub = v2sub;
+exports.v2ray = v2ray;
+var lib_1 = require("./lib");
+Object.defineProperty(exports, "StreamSettingsObject", { enumerable: true, get: function () { return lib_1.StreamSettingsObject; } });
+Object.defineProperty(exports, "AccountObject", { enumerable: true, get: function () { return lib_1.AccountObject; } });
+Object.defineProperty(exports, "FallbackObject", { enumerable: true, get: function () { return lib_1.FallbackObject; } });
 //# sourceMappingURL=index.js.map

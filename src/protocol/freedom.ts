@@ -1,22 +1,47 @@
 /**
- * Freedom 是一个出站协议
- * 可以用来向任意网络发送（正常的） TCP 或 UDP 数据。
+ * 在目标地址为域名时，Freedom 可以直接向此域名发出连接（"AsIs"），或者将域名解析为 IP 之后再建立连接（"UseIP"、"UseIPv4" 和 "UseIPv6"）
+ *
+ * 解析 IP 的步骤会使用 V2Ray 内建的 DNS
  */
+const enum FREEDOM_STRATEGY {
+    AsIs = "AsIs",
+    UseIP = "UseIP",
+    UseIPv4 = "UseIPv4",
+    UseIPv6 = "UseIPv6"
+}
 
-import { DOMAINSTRATEGY } from "../common";
+/**
+ * Freedom 是一个出站协议，可以用来向任意网络发送（正常的） TCP 或 UDP 数据
+ */
+class FreedomOutboundObject {
+    /**
+     * 在目标地址为域名时，Freedom 可以直接向此域名发出连接（"AsIs"），或者将域名解析为 IP 之后再建立连接（"UseIP"、"UseIPv4" 和 "UseIPv6"）
+     * 
+     * 解析 IP 的步骤会使用 V2Ray 内建的 DNS
+     */
+    domainStrategy: FREEDOM_STRATEGY = FREEDOM_STRATEGY.AsIs;
 
-export class freedom_outbound {
-    domainStrategy: string = DOMAINSTRATEGY.Asls;
+    /** 
+     * Freedom 会强制将所有数据发送到指定地址（而不是入站协议指定的地址）
+     * 
+     * 其值为一个字符串，样例：`127.0.0.1:80`，`:1234`。当地址不指定时，如 `:443`，Freedom 不会修改原先的目标地址
+     * 
+     * 当端口为 0 时，如 `v2ray.com: 0`，Freedom 不会修改原先的端口
+     */
     redirect: string;
 
+    /** 用户等级，所有连接都使用这一等级 */
+    userLevel: string;
+
     /**
-     * 
-     * @param redirect Freedom 会强制将所有数据发送到指定地址（而不是入站协议指定的地址）
-     * @param domainStrategy 在目标地址为域名时，Freedom 可以直接向此域名发出连接（"AsIs"），或者将域名解析为 IP 之后再建立连接（"UseIP"、"UseIPv4"、"UseIPv6"）。
-     * 
+     * FreedomOutboundObject
+     * @param redirect Freedom 会强制将所有数据发送到指定地址
+     * @param userLevel 用户等级
      */
-    constructor(redirect: string, domainStrategy: string = DOMAINSTRATEGY.Asls) {
+    constructor(redirect: string, userLevel?:string) {
         this.redirect = redirect;
-        this.domainStrategy = domainStrategy;
+        this.userLevel = userLevel || this.userLevel;
     }
 }
+
+export { FREEDOM_STRATEGY, FreedomOutboundObject };
