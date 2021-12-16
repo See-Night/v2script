@@ -6,3 +6,5 @@
 * [ ] `src/transport/tcp.ts` `NoneHeaderObject` `type: string = "none"` 改为 `type: "none" = "none"`
 * [ ] `src/transport/tcp.ts` `HttpHeaderobject`  改为 `HttpHeaderObject`
 * [ ] `src/transport/tcp.ts` `NoneHeaderObject` `type: string = "http"` 改为 `type: "http" = "http"`
+* [ ] `src/transport/quic.ts` `QuicObject` `header: HEADER_OBJECT = HEADER_OBJECT.none;` 改为 `header: { type: HEADER_OBJECT } = { type: HEADER_OBJECT.none }`
+* [ ] 

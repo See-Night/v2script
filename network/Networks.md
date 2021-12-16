@@ -4,16 +4,16 @@
 
 目前支持的连接方式如下所示：
 
-| 连接方式                | 类                                       |
-| ----------------------- | ---------------------------------------- |
-| [Tcp](/network/Tcp.md)  | [`TcpObject`](/network/Tcp.md#TcpObject) |
-| [mKcp](/network/Kcp.md) | [`KcpObject`](/network/Kcp.md#KcpObject) |
-|                         |                                          |
-|                         |                                          |
-|                         |                                          |
-|                         |                                          |
-|                         |                                          |
-|                         |                                          |
+| 连接方式                                 | 类                                                           |
+| ---------------------------------------- | ------------------------------------------------------------ |
+| [Tcp](/network/Tcp.md)                   | [`TcpObject`](/network/Tcp.md#TcpObject)                     |
+| [mKcp](/network/Kcp.md)                  | [`KcpObject`](/network/Kcp.md#KcpObject)                     |
+| [Websocket](/network/Websocket.md)       | [`WebsocketObject`](/network/Websocket.md#WebsocketObject)   |
+| [HTTP/2](/network/HTTP2.md)              | [`HttpObject`](/network/HTTP2.md#HttpObject)                 |
+| [QUIC](/network/QUIC.md)                 | [`QuicObject`](/network/QUIC.md#QuicObject)                  |
+| [DomainSocket](/network/DomainSocket.md) | [`DomainSocketObject`](/network/DomainSocket.md#DomainSocketObject) |
+| [gRCP](/network/grpc.md)                 | [`grpcObject`](/network/grpc.md#grcpObject)                  |
+| [Sockopt](/network/Sockopt.md)           | [`SockoptObject`](/network/Sockopt.md#SockoptObject)         |
 
 ## NETWORK
 
@@ -56,3 +56,9 @@ const enum HEADER_OBJECT {
 }
 ```
 
+- `none`：默认值，不进行伪装，发送的数据是没有特征的数据包。
+- `srtp`：伪装成 SRTP 数据包，会被识别为视频通话数据（如 FaceTime）。
+- `utp`：伪装成 uTP 数据包，会被识别为 BT 下载数据。
+- `wechat-video`：伪装成微信视频通话的数据包。
+- `dtls`：伪装成 DTLS 1.2 数据包。
+- `wireguard`：伪装成 WireGuard 数据包。（并不是真正的 WireGuard 协议）

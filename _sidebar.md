@@ -2,6 +2,7 @@
   * [快速开始](/introduction/begin.md "v2script WiKi")
   * [配置](/introduction/config.md "v2script WiKi")
   * [完整实例](/introduction/fullconfig.md "v2script WiKi")
+  
 * **高级**
   * [配置结构](/advanced/configuration.md "v2script WiKi")
   * [Log 日志](/advanced/Log.md "v2script WiKi")
@@ -17,6 +18,7 @@
   * [FakeDNS DNS欺骗](/advanced/FakeDNS.md "v2script WiKi")
   * [BrowserForwarder 浏览器转发](/advanced/BrowserForwarder.md "v2script WiKi")
   * [Observatory 连接观测](/advanced/Observatory.md "v2script WiKi")
+  
 * **传输协议**
   * [传输列表](/protocol/Protocols.md "v2script WiKi")
   * [用户配置](/protocol/Account.md "v2script WiKi")
@@ -32,5 +34,14 @@
   * [VMess](/protocol/Vmess.md "v2script WiKi")
   * [VLess](/protocol/Vless.md "v2script WiKi")
   * [Loopback](/protocol/Loopback.md "v2script WiKi")
+  
 * **连接方式**
   * [连接列表](/network/Networks.md "v2script WiKi")
+  * [Tcp](/network/Tcp.md) 
+  * [mKcp](/network/Kcp.md)
+  * [Websocket](/network/Websocket.md) 
+  * [HTTP/2](/network/HTTP2.md)
+  * [QUIC](/network/QUIC.md) 
+  * [DomainSocket](/network/DomainSocket.md)
+  * [gRCP](/network/grpc.md) 
+  * [Sockopt](/network/Sockopt.md) 
