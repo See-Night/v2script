@@ -1,0 +1,1 @@
+* [Home](/ "v2script Wiki")
