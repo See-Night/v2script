@@ -242,7 +242,7 @@ class TcpObject {
      * 
      * HTTP 伪装无法被其它 HTTP 服务器（如 Nginx）分流，但可以被 VLESS fallbacks path 分流
      */
-    header: NoneHeaderObject | HttpHeaderobject = new NoneHeaderObject();
+    header: NoneHeaderObject | HttpHeaderObject = new NoneHeaderObject();
 }
 ```
 

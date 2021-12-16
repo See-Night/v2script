@@ -1,5 +1,5 @@
 import { StreamSettingsObject } from "./streamsetting";
-import { AccountObject } from "./protocal";
+import { AccountObject } from "./protocol";
 
 /** 传输协议 */
 const enum PROTOCOL {

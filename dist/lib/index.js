@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.FallbackObject = exports.AccountObject = exports.StreamSettingsObject = void 0;
 var streamsetting_1 = require("./streamsetting");
 Object.defineProperty(exports, "StreamSettingsObject", { enumerable: true, get: function () { return streamsetting_1.StreamSettingsObject; } });
-var protocal_1 = require("./protocal");
-Object.defineProperty(exports, "AccountObject", { enumerable: true, get: function () { return protocal_1.AccountObject; } });
+var protocol_1 = require("./protocol");
+Object.defineProperty(exports, "AccountObject", { enumerable: true, get: function () { return protocol_1.AccountObject; } });
 /** 回落分流配置 */
 var FallbackObject = /** @class */ (function () {
     /**

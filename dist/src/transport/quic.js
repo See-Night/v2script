@@ -22,7 +22,7 @@ var QUICObject = /** @class */ (function () {
          */
         this.key = "";
         /** 数据包头部伪装设置 */
-        this.header = "none" /* none */;
+        this.header = { type: "none" /* none */ };
     }
     return QUICObject;
 }());

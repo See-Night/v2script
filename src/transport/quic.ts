@@ -29,7 +29,7 @@ class QUICObject {
     key: string = "";
 
     /** 数据包头部伪装设置 */
-    header: HEADER_OBJECT = HEADER_OBJECT.none;
+    header: { type: HEADER_OBJECT } = { type: HEADER_OBJECT.none };
 }
 
 export { QUIC_SECURITY, QUICObject };

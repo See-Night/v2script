@@ -8,11 +8,11 @@ var OutboundObject = /** @class */ (function () {
     /**
      * OutboundObject
      * @param tag 此出站连接的标识
-     * @param protocal 连接协议名称
+     * @param protocol 连接协议名称
      * @param settings 具体的配置内容
      * @param mux 是否启用多路复用
      */
-    function OutboundObject(tag, protocal, settings, mux) {
+    function OutboundObject(tag, protocol, settings, mux) {
         /** 用于发送数据的 IP 地址，当主机有多个 IP 地址时有效，默认值为 `"0.0.0.0"`*/
         this.sendThrough = "0.0.0.0";
         /** [底层传输配置](https://www.v2fly.org/config/transport.html#streamsettingsobject) */
@@ -22,7 +22,7 @@ var OutboundObject = /** @class */ (function () {
         /** 多路复用（Mux）配置 */
         this.mux = null;
         this.tag = tag;
-        this.protocol = protocal;
+        this.protocol = protocol;
         this.settings = settings;
         if (mux)
             this.mux = new MuxObject();

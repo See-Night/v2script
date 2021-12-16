@@ -1,9 +1,9 @@
 class NoneHeaderObject {
-    type: string = "none";
+    type: "none" = "none";
 }
 
-class HttpHeaderobject {
-    type: string = "http";
+class HttpHeaderObject {
+    type: "http" = "http";
     request: {
         version: string,
         method: string,
@@ -75,7 +75,7 @@ class TcpObject {
      * 
      * HTTP 伪装无法被其它 HTTP 服务器（如 Nginx）分流，但可以被 VLESS fallbacks path 分流
      */
-    header: NoneHeaderObject | HttpHeaderobject = new NoneHeaderObject();
+    header: NoneHeaderObject | HttpHeaderObject = new NoneHeaderObject();
 }
 
-export { NoneHeaderObject, HttpHeaderobject, TcpObject };
+export { NoneHeaderObject, HttpHeaderObject, TcpObject };

@@ -25,7 +25,7 @@ import {
     VlessUserObject, VlessServerObject, VlessClientObject, VlessInboundObject, VlessOutboundObject,
     VmessUserObject, VMESS_SECURITY, VmessOutboundObject, VmessInboundObject, VmessClientObject, DetourObject, DefaultObject, VmessServerObject,
 
-    NoneHeaderObject, HttpHeaderobject, TcpObject,
+    NoneHeaderObject, HttpHeaderObject, TcpObject,
     KcpObject,
     WebSocketObject,
     HTTP_METHOD, HttpObject,
@@ -125,7 +125,7 @@ export {
     VlessUserObject, VlessServerObject, VlessClientObject, VlessInboundObject, VlessOutboundObject,
     VmessUserObject, VMESS_SECURITY, VmessOutboundObject, VmessInboundObject, VmessClientObject, DetourObject, DefaultObject, VmessServerObject,
 
-    NoneHeaderObject, HttpHeaderobject, TcpObject,
+    NoneHeaderObject, HttpHeaderObject, TcpObject,
     KcpObject,
     WebSocketObject,
     HTTP_METHOD, HttpObject,

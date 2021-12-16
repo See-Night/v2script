@@ -15,4 +15,4 @@ var AccountObject = /** @class */ (function () {
     return AccountObject;
 }());
 exports.AccountObject = AccountObject;
-//# sourceMappingURL=protocal.js.map
+//# sourceMappingURL=protocol.js.map

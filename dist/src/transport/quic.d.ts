@@ -25,6 +25,8 @@ declare class QUICObject {
      */
     key: string;
     /** 数据包头部伪装设置 */
-    header: HEADER_OBJECT;
+    header: {
+        type: HEADER_OBJECT;
+    };
 }
 export { QUIC_SECURITY, QUICObject };

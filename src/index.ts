@@ -59,7 +59,7 @@ export {
 };
 
 import {
-    NoneHeaderObject, HttpHeaderobject, TcpObject,
+    NoneHeaderObject, HttpHeaderObject, TcpObject,
     KcpObject,
     WebSocketObject,
     HTTP_METHOD, HttpObject,
@@ -70,7 +70,7 @@ import {
 } from "./transport";
 
 export {
-    NoneHeaderObject, HttpHeaderobject, TcpObject,
+    NoneHeaderObject, HttpHeaderObject, TcpObject,
     KcpObject,
     WebSocketObject,
     HTTP_METHOD, HttpObject,

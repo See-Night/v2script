@@ -86,7 +86,7 @@ class VlessClientObject {
 /** Vless 入站配置 */
 class VlessInboundObject {
     /** 客户端列表 */
-    clients: VlessInboundObject[];
+    clients: VlessClientObject[];
 
     /** 回落分流列表 */
     fallbacks: FallbackObject[];
@@ -96,8 +96,8 @@ class VlessInboundObject {
      * @param clients 客户端列表
      * @param fallbacks 回落分流列表
      */
-    constructor(clients: VlessInboundObject | VlessInboundObject[], fallbacks: FallbackObject | FallbackObject[]) {
-        if (clients instanceof VlessInboundObject) clients = [clients];
+    constructor(clients: VlessClientObject | VlessClientObject[], fallbacks: FallbackObject | FallbackObject[]) {
+        if (clients instanceof VlessClientObject) clients = [clients];
         if (fallbacks instanceof FallbackObject) fallbacks = [fallbacks];
 
         this.clients = clients;

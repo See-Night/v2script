@@ -74,7 +74,7 @@ var VlessInboundObject = /** @class */ (function () {
      * @param fallbacks 回落分流列表
      */
     function VlessInboundObject(clients, fallbacks) {
-        if (clients instanceof VlessInboundObject)
+        if (clients instanceof VlessClientObject)
             clients = [clients];
         if (fallbacks instanceof lib_1.FallbackObject)
             fallbacks = [fallbacks];

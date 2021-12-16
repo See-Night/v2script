@@ -25,11 +25,11 @@ declare class OutboundObject {
     /**
      * OutboundObject
      * @param tag 此出站连接的标识
-     * @param protocal 连接协议名称
+     * @param protocol 连接协议名称
      * @param settings 具体的配置内容
      * @param mux 是否启用多路复用
      */
-    constructor(tag: string, protocal: PROTOCOL, settings: BlackholeOutboundObject | DnsOutboundObject | FreedomOutboundObject | HTTPOutboundObject | LoopbackOutboundObject | ShadowsocksOutboundObject | SocksOutboundObject | TrojanOutboundObject | VlessOutboundObject | VmessOutboundObject, mux: boolean);
+    constructor(tag: string, protocol: PROTOCOL, settings: BlackholeOutboundObject | DnsOutboundObject | FreedomOutboundObject | HTTPOutboundObject | LoopbackOutboundObject | ShadowsocksOutboundObject | SocksOutboundObject | TrojanOutboundObject | VlessOutboundObject | VmessOutboundObject, mux: boolean);
 }
 /**
  * 出站代理配置

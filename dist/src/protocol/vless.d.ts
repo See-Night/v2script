@@ -57,7 +57,7 @@ declare class VlessClientObject {
 /** Vless 入站配置 */
 declare class VlessInboundObject {
     /** 客户端列表 */
-    clients: VlessInboundObject[];
+    clients: VlessClientObject[];
     /** 回落分流列表 */
     fallbacks: FallbackObject[];
     /**
@@ -65,6 +65,6 @@ declare class VlessInboundObject {
      * @param clients 客户端列表
      * @param fallbacks 回落分流列表
      */
-    constructor(clients: VlessInboundObject | VlessInboundObject[], fallbacks: FallbackObject | FallbackObject[]);
+    constructor(clients: VlessClientObject | VlessClientObject[], fallbacks: FallbackObject | FallbackObject[]);
 }
 export { VlessUserObject, VlessServerObject, VlessClientObject, VlessInboundObject, VlessOutboundObject };

@@ -1,4 +1,4 @@
-import { NoneHeaderObject, HttpHeaderobject, TcpObject } from "./tcp";
+import { NoneHeaderObject, HttpHeaderObject, TcpObject } from "./tcp";
 import { KcpObject } from "./kcp";
 import { WebSocketObject } from './websocket';
 import { HTTP_METHOD, HttpObject } from './http';
@@ -8,7 +8,7 @@ import { grpcObject } from './grpc';
 import { TPROXY, SockoptObject } from './sockopt';
 
 export {
-    NoneHeaderObject, HttpHeaderobject, TcpObject,
+    NoneHeaderObject, HttpHeaderObject, TcpObject,
     KcpObject,
     WebSocketObject,
     HTTP_METHOD, HttpObject,

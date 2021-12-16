@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SockoptObject = exports.grpcObject = exports.DomainSocketObject = exports.QUICObject = exports.HttpObject = exports.WebSocketObject = exports.KcpObject = exports.TcpObject = exports.HttpHeaderobject = exports.NoneHeaderObject = void 0;
+exports.SockoptObject = exports.grpcObject = exports.DomainSocketObject = exports.QUICObject = exports.HttpObject = exports.WebSocketObject = exports.KcpObject = exports.TcpObject = exports.HttpHeaderObject = exports.NoneHeaderObject = void 0;
 var tcp_1 = require("./tcp");
 Object.defineProperty(exports, "NoneHeaderObject", { enumerable: true, get: function () { return tcp_1.NoneHeaderObject; } });
-Object.defineProperty(exports, "HttpHeaderobject", { enumerable: true, get: function () { return tcp_1.HttpHeaderobject; } });
+Object.defineProperty(exports, "HttpHeaderObject", { enumerable: true, get: function () { return tcp_1.HttpHeaderObject; } });
 Object.defineProperty(exports, "TcpObject", { enumerable: true, get: function () { return tcp_1.TcpObject; } });
 var kcp_1 = require("./kcp");
 Object.defineProperty(exports, "KcpObject", { enumerable: true, get: function () { return kcp_1.KcpObject; } });

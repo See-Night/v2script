@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TcpObject = exports.HttpHeaderobject = exports.NoneHeaderObject = void 0;
+exports.TcpObject = exports.HttpHeaderObject = exports.NoneHeaderObject = void 0;
 var NoneHeaderObject = /** @class */ (function () {
     function NoneHeaderObject() {
         this.type = "none";
@@ -8,8 +8,8 @@ var NoneHeaderObject = /** @class */ (function () {
     return NoneHeaderObject;
 }());
 exports.NoneHeaderObject = NoneHeaderObject;
-var HttpHeaderobject = /** @class */ (function () {
-    function HttpHeaderobject() {
+var HttpHeaderObject = /** @class */ (function () {
+    function HttpHeaderObject() {
         this.type = "http";
         this.request = {
             version: "1.1",
@@ -50,9 +50,9 @@ var HttpHeaderobject = /** @class */ (function () {
             }
         };
     }
-    return HttpHeaderobject;
+    return HttpHeaderObject;
 }());
-exports.HttpHeaderobject = HttpHeaderobject;
+exports.HttpHeaderObject = HttpHeaderObject;
 /**
  * 当前连接的 TCP 配置，仅当此连接使用 TCP 时有效
  */
