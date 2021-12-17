@@ -2,7 +2,7 @@
 
 [![NODEJS](https://img.shields.io/badge/Nodejs->=10-green)](https://nodejs.org) [![NPM](https://img.shields.io/badge/npm-orange)](https://www.npmjs.com) [![TYPESCRIPT](https://img.shields.io/badge/typescript-4.1.3-informational)](https://www.typescriptlang.org/) 
 
-> 语言/Language: **简体中文** | [English](./README.en.md)
+语言/Language: 简体中文 | [English](docs/en/README.md)
 
 ## 介绍
 
